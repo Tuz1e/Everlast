@@ -17,10 +17,10 @@ void Game::Initialize()
 	myCircle.setRadius(100.0f);
 	myCircle.setFillColor(sf::Color::Green);
 	myPosition = myCircle.getPosition();
-	myVelocity = sf::Vector2f(25.0f, 25.0f);
+	myVelocity = sf::Vector2f(10.0f, 10.0f);
 }
 
-void Game::Update(const float &aDeltaTime)
+void Game::Update(const double &aDeltaTime)
 {
 	if (sf::Keyboard::isKeyPressed(sf::Keyboard::W))
 	{

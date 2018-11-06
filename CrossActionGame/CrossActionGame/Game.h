@@ -12,7 +12,7 @@ public:
 	~Game();
 
 	void Initialize();
-	void Update(const float &aDeltaTime);
+	void Update(const double &aDeltaTime);
 	void Render(sf::RenderWindow &aWindow);
 
 	sf::CircleShape myCircle;
