@@ -2,11 +2,9 @@
 #include "Game.h"
 #include "MathFunc.h"
 
-
 Game::Game()
 {
 }
-
 
 Game::~Game()
 {
