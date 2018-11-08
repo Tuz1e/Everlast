@@ -5,7 +5,7 @@
 #define AUTHOR "Pontuz Klasson"
 #define REPOSITORY "https://github.com/Tuz1e/Everlast"
 
-#include "Sprite.h"
+#include "Player.h"
 
 class Game
 {
@@ -17,12 +17,9 @@ public:
 	void LoadContent();
 	void Update(const float &aDeltaTime);
 	void Render(sf::RenderWindow &aWindow);
+	void LateRender(sf::RenderWindow &aWindow);
 
-	Sprite mySprite;
-	sf::Texture myTexture;
-	sf::CircleShape myCircle;
-	sf::Vector2f myPosition;
-	sf::Vector2f myVelocity;
+	Player myPlayer;
 };
 
 #endif

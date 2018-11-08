@@ -12,6 +12,7 @@ public:
 	void SetTexture(sf::Texture aTexture);
 	sf::Sprite GetSprite();
 	void SetSprite(sf::Sprite aSprite);
+	void SetPosition(sf::Vector2f aPosition);
 
 	void SetScale(float aX, float aY);
 	void Render(sf::RenderWindow &aWindow);

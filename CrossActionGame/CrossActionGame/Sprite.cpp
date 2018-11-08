@@ -40,6 +40,11 @@ void Sprite::SetSprite(sf::Sprite aSprite)
 	mySprite = aSprite;
 }
 
+void Sprite::SetPosition(sf::Vector2f aPosition)
+{
+	mySprite.setPosition(aPosition);
+}
+
 void Sprite::SetScale(float aX, float aY)
 {
 	mySprite.setScale(sf::Vector2f(aX, aY));
