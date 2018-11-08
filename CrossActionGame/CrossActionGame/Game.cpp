@@ -20,9 +20,11 @@ void Game::Initialize()
 
 void Game::LoadContent()
 {
+	mySprite.LoadFromFile("slime-orange.png");
+	mySprite.SetScale(20.0f, 20.0f);
 }
 
-void Game::Update(const double &aDeltaTime)
+void Game::Update(const float &aDeltaTime)
 {
 	if (sf::Keyboard::isKeyPressed(sf::Keyboard::W))
 	{
@@ -58,4 +60,5 @@ void Game::Update(const double &aDeltaTime)
 void Game::Render(sf::RenderWindow &aWindow)
 {
 	aWindow.draw(myCircle);
+	mySprite.Render(aWindow);
 }
