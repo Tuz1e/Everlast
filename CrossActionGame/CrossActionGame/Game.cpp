@@ -18,6 +18,10 @@ void Game::Initialize()
 	myVelocity = sf::Vector2f(10.0f, 10.0f);
 }
 
+void Game::LoadContent()
+{
+}
+
 void Game::Update(const double &aDeltaTime)
 {
 	if (sf::Keyboard::isKeyPressed(sf::Keyboard::W))
@@ -35,6 +39,17 @@ void Game::Update(const double &aDeltaTime)
 	if (sf::Keyboard::isKeyPressed(sf::Keyboard::D))
 	{
 		myPosition.x += myVelocity.x * aDeltaTime;
+	}
+
+	if (sf::Keyboard::isKeyPressed(sf::Keyboard::Q))
+	{
+		myCircle.setRadius(myCircle.getRadius() + (1 * aDeltaTime));
+		std::cout << "Increasing Size" << std::endl;
+	}
+	if (sf::Keyboard::isKeyPressed(sf::Keyboard::E))
+	{
+		myCircle.setRadius(myCircle.getRadius() - (1 * aDeltaTime));
+		std::cout << "Decreasing Size" << std::endl;
 	}
 
 	myCircle.setPosition(myPosition);

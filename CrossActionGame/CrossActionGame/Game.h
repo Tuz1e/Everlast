@@ -12,6 +12,7 @@ public:
 	~Game();
 
 	void Initialize();
+	void LoadContent();
 	void Update(const double &aDeltaTime);
 	void Render(sf::RenderWindow &aWindow);
 
