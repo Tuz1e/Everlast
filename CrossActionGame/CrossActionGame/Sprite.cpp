@@ -50,7 +50,7 @@ void Sprite::SetScale(float aX, float aY)
 	mySprite.setScale(sf::Vector2f(aX, aY));
 }
 
-void Sprite::Render(sf::RenderWindow & aWindow)
+void Sprite::Render(sf::RenderWindow & aWindow, bool aAnimateFlag)
 {
 	aWindow.draw(mySprite);
 }

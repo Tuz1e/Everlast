@@ -41,5 +41,5 @@ void Player::Update(const float & aDeltaTime)
 
 void Player::Render(sf::RenderWindow & aWindow)
 {
-	mySprite.Render(aWindow);
+	mySprite.Render(aWindow, false);
 }
