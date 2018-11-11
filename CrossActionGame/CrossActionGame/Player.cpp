@@ -3,7 +3,7 @@
 
 Player::Player()
 {
-	mySpeed = sf::Vector2f(5.0f, 5.0f);
+	mySpeed = sf::Vector2f(2.5f, 2.5f);
 	myPosition = sf::Vector2f(10.0f, 10.0f);
 	myAnimateFlag = false;
 }
@@ -15,7 +15,7 @@ Player::~Player()
 void Player::LoadContent()
 {
 	mySprite.LoadFromFile("player_run.png");
-	mySprite.SetAnimation(1, 7, 7, 4);
+	mySprite.SetAnimation(1, 7, 7, 6);
 	mySprite.SetScale(3.0f, 3.0f);
 }
 
@@ -32,13 +32,15 @@ void Player::Update(float & aDeltaTime)
 	if (sf::Keyboard::isKeyPressed(sf::Keyboard::A))
 	{
 		myPosition.x -= mySpeed.x * aDeltaTime;
+		mySprite.Flip(FlipSides::LEFT);
 	}
 	if (sf::Keyboard::isKeyPressed(sf::Keyboard::D))
 	{
 		myPosition.x += mySpeed.x * aDeltaTime;
+		mySprite.Flip(FlipSides::RIGHT);
 	}
 
-	myAnimateFlag = (sf::Keyboard::isKeyPressed(sf::Keyboard::Q)) ? true : false;
+	myAnimateFlag = (myPosition != mySprite.GetSprite().getPosition()) ? true : false;
 
 	mySprite.UpdateAnimation(aDeltaTime, myPosition, myAnimateFlag);
 }

@@ -16,8 +16,8 @@ void Sprite::LoadFromFile(const std::string &aFileName)
 	{
 		std::cout << "ERROR#Loading " + aFileName << std::endl;
 	}
-
 	mySprite.setTexture(myTexture);
+	myScale = mySprite.getScale();
 }
 
 sf::Texture Sprite::GetTexture()
@@ -33,6 +33,18 @@ void Sprite::SetTexture(sf::Texture aTexture)
 sf::Sprite Sprite::GetSprite()
 {
 	return mySprite;
+}
+
+void Sprite::Flip(FlipSides aSide)
+{
+	if (aSide == FlipSides::LEFT) 
+	{
+		mySprite.setScale(-myScale.x, myScale.y);
+	}
+	else
+	{
+		mySprite.setScale(myScale.x, myScale.y);
+	}
 }
 
 void Sprite::SetSprite(sf::Sprite aSprite)
@@ -54,6 +66,7 @@ void Sprite::SetAnimation(int aRowCount, int aColumnCount, int aFrameCount, floa
 	myFrameCount = aFrameCount;
 	myFramerate = aFramerate;
 
+	//Sets the origin in the middle
 	mySprite.setOrigin(myTexture.getSize().x / myColumnCount / 2, myTexture.getSize().y / 2);
 }
 
@@ -61,13 +74,13 @@ void Sprite::UpdateAnimation(float & aDeltaTime, sf::Vector2f &aPosition, bool a
 {
 	mySprite.setPosition(aPosition);
 
-		if (aAnimateFlag)
-		{
-			myCurrentFrame += aDeltaTime / myFramerate;
-			//printf("Current Animation Frame: %f\n", myCurrentFrame);
-		}
+	if (aAnimateFlag)
+	{
+		myCurrentFrame += aDeltaTime / myFramerate;
+		//printf("Current Animation Frame: %f\n", myCurrentFrame);
+	}
 
-	if (myCurrentFrame >= myFrameCount)
+	if (myCurrentFrame >= myFrameCount || !aAnimateFlag)
 	{
 		myCurrentFrame = 0;
 	}
@@ -84,6 +97,7 @@ void Sprite::UpdateAnimation(float & aDeltaTime, sf::Vector2f &aPosition, bool a
 void Sprite::SetScale(float aX, float aY)
 {
 	mySprite.setScale(sf::Vector2f(aX, aY));
+	myScale = sf::Vector2f(aX, aY);
 }
 
 void Sprite::Render(sf::RenderWindow & aWindow)

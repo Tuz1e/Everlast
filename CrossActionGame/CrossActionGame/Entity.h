@@ -15,8 +15,10 @@ public:
 
 protected:
 	Sprite mySprite;
-	sf::Vector2f mySpeed;
-	sf::Vector2f myPosition;
+	sf::Vector2f 
+		mySpeed,
+		myVelocity,
+		myPosition;
 };
 
 #endif
