@@ -10,7 +10,7 @@ public:
 	~Entity();
 
 	virtual void LoadContent();
-	virtual void Update(const float &aDeltaTime);
+	virtual void Update(float &aDeltaTime);
 	virtual void Render(sf::RenderWindow &aWindow);
 
 protected:

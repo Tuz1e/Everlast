@@ -19,7 +19,7 @@ void Game::LoadContent()
 	myPlayer.LoadContent();
 }
 
-void Game::Update(const float &aDeltaTime)
+void Game::Update(float &aDeltaTime)
 {
 	myPlayer.Update(aDeltaTime);
 }

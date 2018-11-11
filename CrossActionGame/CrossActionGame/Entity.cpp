@@ -13,7 +13,7 @@ void Entity::LoadContent()
 {
 }
 
-void Entity::Update(const float & aDeltaTime)
+void Entity::Update(float & aDeltaTime)
 {
 }
 

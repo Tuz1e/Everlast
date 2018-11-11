@@ -15,7 +15,7 @@ public:
 
 	void Initialize();
 	void LoadContent();
-	void Update(const float &aDeltaTime);
+	void Update(float &aDeltaTime);
 	void Render(sf::RenderWindow &aWindow);
 	void LateRender(sf::RenderWindow &aWindow);
 

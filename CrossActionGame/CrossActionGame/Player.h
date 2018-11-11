@@ -10,8 +10,10 @@ public:
 	~Player();
 
 	void LoadContent() override;
-	void Update(const float &aDeltaTime) override;
+	void Update(float &aDeltaTime) override;
 	void Render(sf::RenderWindow &aWindow) override;
+
+	bool myAnimateFlag;
 };
 
 #endif

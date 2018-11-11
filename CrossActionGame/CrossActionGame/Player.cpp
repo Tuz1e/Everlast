@@ -5,6 +5,7 @@ Player::Player()
 {
 	mySpeed = sf::Vector2f(5.0f, 5.0f);
 	myPosition = sf::Vector2f(10.0f, 10.0f);
+	myAnimateFlag = false;
 }
 
 Player::~Player()
@@ -13,11 +14,12 @@ Player::~Player()
 
 void Player::LoadContent()
 {
-	mySprite.LoadFromFile("gabe-idle-run.png");
+	mySprite.LoadFromFile("player_run.png");
+	mySprite.SetAnimation(1, 7, 7, 4);
 	mySprite.SetScale(3.0f, 3.0f);
 }
 
-void Player::Update(const float & aDeltaTime)
+void Player::Update(float & aDeltaTime)
 {
 	if (sf::Keyboard::isKeyPressed(sf::Keyboard::W))
 	{
@@ -36,10 +38,12 @@ void Player::Update(const float & aDeltaTime)
 		myPosition.x += mySpeed.x * aDeltaTime;
 	}
 
-	mySprite.SetPosition(myPosition);
+	myAnimateFlag = (sf::Keyboard::isKeyPressed(sf::Keyboard::Q)) ? true : false;
+
+	mySprite.UpdateAnimation(aDeltaTime, myPosition, myAnimateFlag);
 }
 
 void Player::Render(sf::RenderWindow & aWindow)
 {
-	mySprite.Render(aWindow, false);
+	mySprite.Render(aWindow);
 }
