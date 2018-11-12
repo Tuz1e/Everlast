@@ -1,7 +1,7 @@
 #ifndef SPRITE_H
 #define SPRITE_H
 
-enum FlipSides 
+enum FlipSides
 {
 	LEFT,
 	RIGHT
@@ -15,9 +15,9 @@ public:
 
 	void LoadFromFile(const std::string &aFileName);
 
-	sf::Texture GetTexture();
+	sf::Texture& GetTexture();
 	void SetTexture(sf::Texture aTexture);
-	sf::Sprite GetSprite();
+	sf::Sprite& GetSprite();
 	void Flip(FlipSides aSide);
 	void SetSprite(sf::Sprite aSprite);
 	void SetPosition(sf::Vector2f aPosition);

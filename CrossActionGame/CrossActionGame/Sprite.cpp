@@ -1,5 +1,6 @@
 #include "pch.h"
 #include "Sprite.h"
+#include <math.h>
 
 Sprite::Sprite()
 {
@@ -20,7 +21,7 @@ void Sprite::LoadFromFile(const std::string &aFileName)
 	myScale = mySprite.getScale();
 }
 
-sf::Texture Sprite::GetTexture()
+sf::Texture& Sprite::GetTexture()
 {
 	return myTexture;
 }
@@ -28,16 +29,18 @@ sf::Texture Sprite::GetTexture()
 void Sprite::SetTexture(sf::Texture aTexture)
 {
 	myTexture = aTexture;
+	mySprite.setTexture(myTexture);
+	myScale = mySprite.getScale();
 }
 
-sf::Sprite Sprite::GetSprite()
+sf::Sprite& Sprite::GetSprite()
 {
 	return mySprite;
 }
 
 void Sprite::Flip(FlipSides aSide)
 {
-	if (aSide == FlipSides::LEFT) 
+	if (aSide == FlipSides::LEFT)
 	{
 		mySprite.setScale(-myScale.x, myScale.y);
 	}
@@ -67,7 +70,7 @@ void Sprite::SetAnimation(int aRowCount, int aColumnCount, int aFrameCount, floa
 	myFramerate = aFramerate;
 
 	//Sets the origin in the middle
-	mySprite.setOrigin(myTexture.getSize().x / myColumnCount / 2, myTexture.getSize().y / 2);
+	mySprite.setOrigin(myTexture.getSize().x / myColumnCount / 2, myTexture.getSize().y / myRowCount / 2);
 }
 
 void Sprite::UpdateAnimation(float & aDeltaTime, sf::Vector2f &aPosition, bool aAnimateFlag)
@@ -76,8 +79,7 @@ void Sprite::UpdateAnimation(float & aDeltaTime, sf::Vector2f &aPosition, bool a
 
 	if (aAnimateFlag)
 	{
-		myCurrentFrame += aDeltaTime / myFramerate;
-		//printf("Current Animation Frame: %f\n", myCurrentFrame);
+		myCurrentFrame += (myFramerate * aDeltaTime) / 60.0f;
 	}
 
 	if (myCurrentFrame >= myFrameCount || !aAnimateFlag)
@@ -86,7 +88,7 @@ void Sprite::UpdateAnimation(float & aDeltaTime, sf::Vector2f &aPosition, bool a
 	}
 
 	sf::IntRect tempIntegerRect(
-		myTexture.getSize().x / myColumnCount * static_cast<int>(myCurrentFrame),
+		myTexture.getSize().x / myColumnCount * static_cast<int>(floor(myCurrentFrame)),
 		myTexture.getSize().y * (myRowCount - 1),
 		myTexture.getSize().x / myColumnCount,
 		myTexture.getSize().y / myRowCount);

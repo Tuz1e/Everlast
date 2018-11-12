@@ -3,7 +3,7 @@
 
 Player::Player()
 {
-	mySpeed = sf::Vector2f(2.5f, 2.5f);
+	mySpeed = sf::Vector2f(3.0f, 3.0f);
 	myPosition = sf::Vector2f(10.0f, 10.0f);
 	myAnimateFlag = false;
 }
@@ -15,7 +15,7 @@ Player::~Player()
 void Player::LoadContent()
 {
 	mySprite.LoadFromFile("player_run.png");
-	mySprite.SetAnimation(1, 7, 7, 6);
+	mySprite.SetAnimation(1, 7, 7, 9.0f);
 	mySprite.SetScale(3.0f, 3.0f);
 }
 
