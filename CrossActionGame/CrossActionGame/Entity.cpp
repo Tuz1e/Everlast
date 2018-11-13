@@ -9,7 +9,7 @@ Entity::~Entity()
 {
 }
 
-void Entity::LoadContent()
+void Entity::LoadContent(sf::Texture *aTexture)
 {
 }
 

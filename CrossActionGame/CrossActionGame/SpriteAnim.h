@@ -1,22 +1,24 @@
 #ifndef SPRITE_H
 #define SPRITE_H
 
+#include <string>
+
 enum FlipSides
 {
 	LEFT,
 	RIGHT
 };
 
-class Sprite
+class SpriteAnim
 {
 public:
-	Sprite();
-	~Sprite();
+	SpriteAnim();
+	~SpriteAnim();
 
 	void LoadFromFile(const std::string &aFileName);
 
-	sf::Texture& GetTexture();
-	void SetTexture(sf::Texture aTexture);
+	sf::Texture *GetTexture();
+	void SetTexture(sf::Texture *aTexture);
 	sf::Sprite& GetSprite();
 	void Flip(FlipSides aSide);
 	void SetSprite(sf::Sprite aSprite);
@@ -28,17 +30,17 @@ public:
 	void Render(sf::RenderWindow &aWindow);
 
 private:
-	sf::Texture myTexture;
+	sf::Texture *myTexture;
 	sf::Sprite mySprite;
 	std::string myContentFolder;
 	sf::Vector2f myScale;
 	int
 		myFrameCount,
 		myRowCount,
-		myColumnCount,
-		myFramerate;
+		myColumnCount;
 	float
-		myCurrentFrame;
+		myCurrentFrame,
+		myFramerate;
 };
 
 #endif

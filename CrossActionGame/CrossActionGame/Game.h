@@ -6,6 +6,7 @@
 #define REPOSITORY "https://github.com/Tuz1e/Everlast"
 
 #include "Player.h"
+#include "Tile.h"
 
 class Game
 {
@@ -20,6 +21,9 @@ public:
 	void LateRender(sf::RenderWindow &aWindow);
 
 	Player myPlayer;
+	Tile* myTile;
+	sf::Sprite mySprite;
+	sf::Sprite mySprite2;
 };
 
 #endif

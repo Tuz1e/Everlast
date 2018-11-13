@@ -12,11 +12,13 @@ Player::~Player()
 {
 }
 
-void Player::LoadContent()
+void Player::LoadContent(sf::Texture *aTexture)
 {
-	mySprite.LoadFromFile("player_run.png");
+	mySprite.SetTexture(aTexture);
 	mySprite.SetAnimation(1, 7, 7, 9.0f);
 	mySprite.SetScale(3.0f, 3.0f);
+
+	std::cout << "Loaded Player Content" << std::endl;
 }
 
 void Player::Update(float & aDeltaTime)

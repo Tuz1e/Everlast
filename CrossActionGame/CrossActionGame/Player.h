@@ -9,7 +9,7 @@ public:
 	Player();
 	~Player();
 
-	void LoadContent() override;
+	void LoadContent(sf::Texture *aTexture) override;
 	void Update(float &aDeltaTime) override;
 	void Render(sf::RenderWindow &aWindow) override;
 
