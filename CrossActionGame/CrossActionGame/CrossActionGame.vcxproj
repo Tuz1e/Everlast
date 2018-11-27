@@ -72,16 +72,16 @@
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <LinkIncremental>true</LinkIncremental>
-    <IncludePath>C:\Users\pontuz.klasson\Documents\SFML-2.5.1\include;$(IncludePath)</IncludePath>
-    <LibraryPath>C:\Users\pontuz.klasson\Documents\SFML-2.5.1\lib;$(LibraryPath)</LibraryPath>
+    <IncludePath>C:\Users\Sync\SFML\include;$(IncludePath)</IncludePath>
+    <LibraryPath>C:\Users\Sync\SFML\lib;$(LibraryPath)</LibraryPath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <LinkIncremental>true</LinkIncremental>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <LinkIncremental>false</LinkIncremental>
-    <IncludePath>C:\Users\pontuz.klasson\Documents\SFML-2.5.1\include;$(IncludePath)</IncludePath>
-    <LibraryPath>C:\Users\pontuz.klasson\Documents\SFML-2.5.1\lib;$(LibraryPath)</LibraryPath>
+    <IncludePath>C:\Users\Sync\SFML\include;$(IncludePath)</IncludePath>
+    <LibraryPath>C:\Users\Sync\SFML\lib;$(LibraryPath)</LibraryPath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <LinkIncremental>false</LinkIncremental>
@@ -158,17 +158,19 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClInclude Include="Entity.h" />
+    <ClInclude Include="FileLoader.h" />
     <ClInclude Include="Game.h" />
     <ClInclude Include="MathFunc.h" />
     <ClInclude Include="pch.h" />
     <ClInclude Include="Player.h" />
     <ClInclude Include="SpriteAnim.h" />
     <ClInclude Include="TextureContainer.h" />
-    <ClInclude Include="Tile.h" />
+    <ClInclude Include="WorldManager.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="CrossActionGame.cpp" />
     <ClCompile Include="Entity.cpp" />
+    <ClCompile Include="FileLoader.cpp" />
     <ClCompile Include="Game.cpp" />
     <ClCompile Include="pch.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>
@@ -179,7 +181,7 @@
     <ClCompile Include="Player.cpp" />
     <ClCompile Include="SpriteAnim.cpp" />
     <ClCompile Include="TextureContainer.cpp" />
-    <ClCompile Include="Tile.cpp" />
+    <ClCompile Include="WorldManager.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

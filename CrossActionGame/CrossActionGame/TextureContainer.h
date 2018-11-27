@@ -2,7 +2,6 @@
 #define TEXTURECONTAINER_H
 
 #define PLAYER_RUN 0
-#define TILE_00 1
 
 #define PLAYER_RUN_TEXTURE "Content/Textures/Player/player_run.png"
 #define TILE_TEXTURE_00 "Content/Textures/Tiles/generic-rpg-tile09.png"
@@ -17,8 +16,10 @@ public:
 	~TextureContainer();
 
 	sf::Texture *GetTexture(unsigned anIndex);
+	sf::Texture *GetTile(unsigned anIndex);
 
 	std::vector<sf::Texture*> myTextures;
+	std::vector<sf::Texture*> myTiles;
 };
 
 #endif

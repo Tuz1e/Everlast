@@ -11,17 +11,26 @@ TextureContainer::TextureContainer()
 	try
 	{
 		myTextures[PLAYER_RUN]->loadFromFile(PLAYER_RUN_TEXTURE); //Load player run texture
-		myTextures[TILE_00]->loadFromFile(TILE_TEXTURE_00); //Load Tile Texture
-		std::cout << "Loaded Textures." << std::endl;
+
+		for (size_t i = 0; i < length; i++)
+		{
+		}
+		printf("\nLoaded textures.");
 	}
 	catch (std::string e)
 	{
-		std::cout << "Unable to load Textures: " << e << std::endl;
+		printf("\nUnable to load textures.");
 	}
 }
 
 TextureContainer::~TextureContainer()
 {
+	for (sf::Texture* txtrptr : myTextures)
+	{
+		txtrptr = nullptr;
+		delete[](txtrptr);
+	}
+	printf("\nRemoved TxtrContainr TxtrPtr.");
 }
 
 sf::Texture *TextureContainer::GetTexture(unsigned anIndex)

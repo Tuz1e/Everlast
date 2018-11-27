@@ -18,7 +18,7 @@ void Player::LoadContent(sf::Texture *aTexture)
 	mySprite.SetAnimation(1, 7, 7, 9.0f);
 	mySprite.SetScale(3.0f, 3.0f);
 
-	std::cout << "Loaded Player Content" << std::endl;
+	printf("\nLoaded player content.");
 }
 
 void Player::Update(float & aDeltaTime)

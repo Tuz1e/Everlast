@@ -9,6 +9,9 @@ SpriteAnim::SpriteAnim()
 
 SpriteAnim::~SpriteAnim()
 {
+	myTexture = nullptr;
+	delete[](myTexture);
+	printf("\nDeleted SpriteAnim txtrptr.");
 }
 
 void SpriteAnim::LoadFromFile(const std::string &aFileName)

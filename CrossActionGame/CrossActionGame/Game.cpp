@@ -13,22 +13,24 @@ Game::~Game()
 
 void Game::Initialize()
 {
-	std::cout << "Initialize Game" << std::endl;
+	printf("\nInitialized Game.");
 }
 
-void Game::LoadContent()
+void Game::LoadContent(sf::RenderWindow &aWindow)
 {
-	std::cout << "Load Game Content" << std::endl;
 	TextureContainer tempTextureCon;
-	mySprite.setTexture(*tempTextureCon.GetTexture(TILE_00));
-	mySprite.setPosition(0, 0);
-	mySprite.setScale(3.0f, 3.0f);
+	//mySprite.setTexture(*tempTextureCon.GetTexture(TILE_00));
+	//mySprite.setPosition(0, 0);
+	//mySprite.setScale(3.0f, 3.0f);
 
-	mySprite2.setTexture(*tempTextureCon.GetTexture(TILE_00));
-	mySprite2.setScale(3.0f, 3.0f);
-	mySprite2.setPosition(mySprite.getTextureRect().width * 3.0f, 0);
+	//mySprite2.setTexture(*tempTextureCon.GetTexture(TILE_00));
+	//mySprite2.setScale(3.0f, 3.0f);
+	//mySprite2.setPosition(mySprite.getTextureRect().width * 3.0f, 0);
 
+	myWorldManager.LoadContent(tempTextureCon, aWindow);
 	myPlayer.LoadContent(tempTextureCon.GetTexture(PLAYER_RUN));
+
+	printf("\nLoaded Content.");
 }
 
 void Game::Update(float &aDeltaTime)
@@ -40,6 +42,7 @@ void Game::Render(sf::RenderWindow &aWindow)
 {
 	aWindow.draw(mySprite);
 	aWindow.draw(mySprite2);
+	myWorldManager.Render(aWindow);
 	myPlayer.Render(aWindow);
 }
 
