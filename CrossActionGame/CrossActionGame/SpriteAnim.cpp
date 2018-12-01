@@ -56,6 +56,12 @@ void SpriteAnim::Flip(FlipSides aSide)
 void SpriteAnim::SetSprite(sf::Sprite aSprite)
 {
 	mySprite = aSprite;
+	myCurrentFrame = 0;
+}
+
+void SpriteAnim::SetFrame(int * anIndex)
+{
+	myCurrentFrame = *anIndex;
 }
 
 void SpriteAnim::SetPosition(sf::Vector2f aPosition)

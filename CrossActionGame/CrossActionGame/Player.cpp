@@ -1,21 +1,29 @@
 #include "pch.h"
 #include "Player.h"
 
+//TODO: Fix flipping. 
+// Make player flip towards mouse
+
 Player::Player()
 {
-	mySpeed = sf::Vector2f(3.0f, 3.0f);
+	myIdleCounter = 0;
+	myAnimationSpeed = 9.0f;
+	mySpeed = sf::Vector2f(2.5f, 2.5f);
 	myPosition = sf::Vector2f(10.0f, 10.0f);
-	myAnimateFlag = false;
+	myIdleFlag = true;
 }
 
 Player::~Player()
 {
 }
 
-void Player::LoadContent(sf::Texture *aTexture)
+void Player::LoadContent(TextureContainer *aTxtrContainer)
 {
-	mySprite.SetTexture(aTexture);
-	mySprite.SetAnimation(1, 7, 7, 9.0f);
+	mySpriteSheets[PLAYER_IDLE] = aTxtrContainer->GetTexture(PLAYER_IDLE);
+	mySpriteSheets[PLAYER_RUN] = aTxtrContainer->GetTexture(PLAYER_RUN);
+
+	mySprite.SetTexture(mySpriteSheets[PLAYER_IDLE]);
+	mySprite.SetAnimation(1, 13, 13, myAnimationSpeed);
 	mySprite.SetScale(3.0f, 3.0f);
 
 	printf("\nLoaded player content.");
@@ -23,31 +31,46 @@ void Player::LoadContent(sf::Texture *aTexture)
 
 void Player::Update(float & aDeltaTime)
 {
+	myVelocity = sf::Vector2f(0, 0);
 	if (sf::Keyboard::isKeyPressed(sf::Keyboard::W))
 	{
-		myPosition.y -= (mySpeed.y * aDeltaTime);
+		myVelocity.y = -(mySpeed.y * aDeltaTime);
 	}
 	if (sf::Keyboard::isKeyPressed(sf::Keyboard::S))
 	{
-		myPosition.y += mySpeed.y * aDeltaTime;
+		myVelocity.y = (mySpeed.y * aDeltaTime);
 	}
 	if (sf::Keyboard::isKeyPressed(sf::Keyboard::A))
 	{
-		myPosition.x -= mySpeed.x * aDeltaTime;
-		mySprite.Flip(FlipSides::LEFT);
+		myVelocity.x = -(mySpeed.x * aDeltaTime);
+		//mySprite.Flip(FlipSides::LEFT);
 	}
 	if (sf::Keyboard::isKeyPressed(sf::Keyboard::D))
 	{
-		myPosition.x += mySpeed.x * aDeltaTime;
-		mySprite.Flip(FlipSides::RIGHT);
+		myVelocity.x = (mySpeed.x * aDeltaTime);
+		//mySprite.Flip(FlipSides::RIGHT);
 	}
 
-	myAnimateFlag = (myPosition != mySprite.GetSprite().getPosition()) ? true : false;
+	if (myVelocity == sf::Vector2f(0, 0) && !myIdleFlag)
+	{
+			mySprite.SetTexture(mySpriteSheets[PLAYER_IDLE]);
+			mySprite.SetAnimation(1, 13, 13, myAnimationSpeed);
+			myIdleFlag = true;
+	}
+	else if (myVelocity != sf::Vector2f(0, 0) && myIdleFlag) 
+	{
+		mySprite.SetTexture(mySpriteSheets[PLAYER_RUN]);
+		mySprite.SetAnimation(1, 8, 8, myAnimationSpeed);
+		myIdleFlag = false;
+		myIdleCounter = 0;
+	}
 
-	mySprite.UpdateAnimation(aDeltaTime, myPosition, myAnimateFlag);
+	myPosition += myVelocity;
+	mySprite.UpdateAnimation(aDeltaTime, myPosition, true);
 }
 
 void Player::Render(sf::RenderWindow & aWindow)
 {
+	mySprite.Flip((sf::Mouse::getPosition(aWindow).x < (int)mySprite.GetSprite().getPosition().x) ? FlipSides::LEFT : FlipSides::RIGHT);
 	mySprite.Render(aWindow);
 }

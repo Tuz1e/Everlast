@@ -18,7 +18,7 @@ void Game::Initialize()
 
 void Game::LoadContent(sf::RenderWindow &aWindow)
 {
-	TextureContainer tempTextureCon;
+	TextureContainer *tempTextureCon = new TextureContainer();
 	//mySprite.setTexture(*tempTextureCon.GetTexture(TILE_00));
 	//mySprite.setPosition(0, 0);
 	//mySprite.setScale(3.0f, 3.0f);
@@ -27,8 +27,8 @@ void Game::LoadContent(sf::RenderWindow &aWindow)
 	//mySprite2.setScale(3.0f, 3.0f);
 	//mySprite2.setPosition(mySprite.getTextureRect().width * 3.0f, 0);
 
-	myWorldManager.LoadContent(tempTextureCon, aWindow);
-	myPlayer.LoadContent(tempTextureCon.GetTexture(PLAYER_RUN));
+	//myWorldManager.LoadContent(tempTextureCon, aWindow);
+	myPlayer.LoadContent(tempTextureCon);
 
 	printf("\nLoaded Content.");
 }
@@ -42,7 +42,7 @@ void Game::Render(sf::RenderWindow &aWindow)
 {
 	aWindow.draw(mySprite);
 	aWindow.draw(mySprite2);
-	myWorldManager.Render(aWindow);
+	//myWorldManager.Render(aWindow);
 	myPlayer.Render(aWindow);
 }
 

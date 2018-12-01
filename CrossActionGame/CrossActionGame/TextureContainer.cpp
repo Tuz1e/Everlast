@@ -11,10 +11,7 @@ TextureContainer::TextureContainer()
 	try
 	{
 		myTextures[PLAYER_RUN]->loadFromFile(PLAYER_RUN_TEXTURE); //Load player run texture
-
-		for (size_t i = 0; i < length; i++)
-		{
-		}
+		myTextures[PLAYER_IDLE]->loadFromFile(PLAYER_IDLE_TEXTURE); //Load player idle texture
 		printf("\nLoaded textures.");
 	}
 	catch (std::string e)

@@ -2,6 +2,7 @@
 #define ENTITY_H
 
 #include "SpriteAnim.h"
+#include "TextureContainer.h"
 
 class Entity
 {
@@ -9,7 +10,7 @@ public:
 	Entity();
 	~Entity();
 
-	virtual void LoadContent(sf::Texture *aTexture);
+	virtual void LoadContent(TextureContainer *aTxtrContainer);
 	virtual void Update(float &aDeltaTime);
 	virtual void Render(sf::RenderWindow &aWindow);
 

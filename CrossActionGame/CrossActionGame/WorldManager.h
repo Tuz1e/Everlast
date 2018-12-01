@@ -17,13 +17,13 @@ public:
 	WorldManager();
 	~WorldManager();
 
-	void Initialize();
-	void LoadContent(TextureContainer &aContainer, sf::RenderWindow &aWindow, World aLocation);
-	void Update();
-	void Render(sf::RenderWindow & aWindow);
-
-private:
-	std::map<int, SpriteAnim> myWorldSprites;
+//	void Initialize();
+//	void LoadContent(TextureContainer &aContainer, sf::RenderWindow &aWindow, World aLocation);
+//	void Update();
+//	void Render(sf::RenderWindow & aWindow);
+//
+//private:
+//	std::map<int, SpriteAnim> myWorldSprites;
 };
 
 #endif
