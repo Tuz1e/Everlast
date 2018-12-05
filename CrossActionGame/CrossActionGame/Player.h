@@ -3,6 +3,9 @@
 
 #include "Entity.h"
 
+#define IDLE 0
+#define RUN 1
+
 class Player : public Entity
 {
 public:
@@ -13,12 +16,8 @@ public:
 	void Update(float &aDeltaTime) override;
 	void Render(sf::RenderWindow &aWindow) override;
 
-	std::map<int, sf::Texture*> mySpriteSheets;
-
 	int myIdleCounter;
 	float myAnimationSpeed;
-
-	bool myIdleFlag;
 };
 
 #endif

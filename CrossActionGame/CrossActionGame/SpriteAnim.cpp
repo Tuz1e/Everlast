@@ -11,6 +11,7 @@ SpriteAnim::~SpriteAnim()
 {
 	myTexture = nullptr;
 	delete[](myTexture);
+
 	printf("\nDeleted SpriteAnim txtrptr.");
 }
 
