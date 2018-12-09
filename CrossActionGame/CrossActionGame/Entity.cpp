@@ -29,3 +29,13 @@ void Entity::SetSpriteSheet(unsigned aTxtrIndex, unsigned anIndex, TextureContai
 	mySpriteSheets[anIndex]->myColumns = aTxtrContainer->GetColumns(aTxtrIndex);
 	mySpriteSheets[anIndex]->myFrames = aTxtrContainer->GetFrames(aTxtrIndex);
 }
+
+void Entity::SetPosition(sf::Vector2f aPos)
+{
+	myPosition = aPos;
+}
+
+void SpriteAnim::SetTexture(sf::Texture * aTexture)
+{
+	mySprite.setTexture(*aTexture);
+}

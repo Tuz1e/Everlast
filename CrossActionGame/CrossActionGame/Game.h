@@ -7,6 +7,7 @@
 
 #include "Player.h"
 #include "WorldManager.h"
+#include "Object.h"
 
 class Game
 {
@@ -22,6 +23,7 @@ public:
 
 	WorldManager myWorldManager;
 	Player myPlayer;
+	Object myObjects;
 
 	sf::Sprite mySprite;
 	sf::Sprite mySprite2;

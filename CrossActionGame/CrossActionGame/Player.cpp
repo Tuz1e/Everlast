@@ -7,7 +7,8 @@
 Player::Player()
 {
 	myIdleCounter = 0;
-	myAnimationSpeed = 9.0f;
+	myAnimationSpeed = 11.0f;
+	myHealth = 150;
 	mySpeed = sf::Vector2f(2.5f, 2.5f);
 	myPosition = sf::Vector2f(10.0f, 10.0f);
 	//myAnimateFlag = false;

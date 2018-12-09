@@ -12,9 +12,12 @@ public:
 	void LoadContent(TextureContainer *aTxtrContainer) override;
 	void Update(float &aDeltaTime) override;
 	void Render(sf::RenderWindow &aWindow) override;
+	void SetEntityObject(unsigned aTxtrIndex, unsigned aSheetIndex, TextureContainer * aTxtrContainer);
+	void AddEntityObject(unsigned anEntityIndex, unsigned aTxtrIndex, unsigned aSheetIndex, TextureContainer *aTxtrContainer);
 	//void Break();
 
-	std::map<int, Entity*> myEntities;
+	int myEntityAmount;
+	std::vector<Entity*> myEntities;
 
 	float myBrokenFlag;
 };

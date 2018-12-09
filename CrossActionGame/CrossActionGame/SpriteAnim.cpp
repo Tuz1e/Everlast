@@ -9,9 +9,7 @@ SpriteAnim::SpriteAnim()
 
 SpriteAnim::~SpriteAnim()
 {
-	myTexture = nullptr;
-	delete[](myTexture);
-
+	PtrDelete(myTexture);
 	printf("\nDeleted SpriteAnim txtrptr.");
 }
 

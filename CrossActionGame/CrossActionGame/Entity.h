@@ -16,12 +16,16 @@ public:
 	virtual void Render(sf::RenderWindow &aWindow);
 	virtual void SetSpriteSheet(unsigned aTxtrIndex, unsigned anIndex, TextureContainer * aTxtrContainer);
 
+	void SetTexture(sf::Texture *aTexture);
+	void SetPosition(sf::Vector2f aPos);
+
 protected:
 	SpriteAnim mySprite;
 	sf::Vector2f
 		mySpeed,
 		myVelocity,
 		myPosition;
+	int myHealth;
 	std::vector<Textures*> mySpriteSheets;
 };
 
