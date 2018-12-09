@@ -16,13 +16,13 @@ void Object::LoadContent(TextureContainer * aTxtrContainer)
 	AddEntityObject(0, BARREL_BROKEN, 1, aTxtrContainer);
 
 	myEntities[0]->mySprite.SetPosition(sf::Vector2f(250, 250));
-	myEntities[0]->mySprite.SetTexture(myEntities[0]->GetSpriteSheets()[BARREL]->myTexture);
+	myEntities[0]->mySprite.SetTexture(myEntities[0]->GetSpriteSheets()[0]->myTexture);
 
 	myEntities[0]->mySprite.SetAnimation
 	(
-		myEntities[0]->GetSpriteSheets()[BARREL]->myRows,
-		myEntities[0]->GetSpriteSheets()[BARREL]->myColumns,
-		myEntities[0]->GetSpriteSheets()[BARREL]->myFrames,
+		myEntities[0]->GetSpriteSheets()[0]->myRows,
+		myEntities[0]->GetSpriteSheets()[0]->myColumns,
+		myEntities[0]->GetSpriteSheets()[0]->myFrames,
 		4.5f
 	);
 }
