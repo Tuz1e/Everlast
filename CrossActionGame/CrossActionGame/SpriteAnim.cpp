@@ -23,16 +23,15 @@ void SpriteAnim::LoadFromFile(const std::string &aFileName)
 	//myScale = mySprite.getScale();
 }
 
-sf::Texture *SpriteAnim::GetTexture()
-{
-	return myTexture;
-}
-
-void SpriteAnim::SetTexture(sf::Texture *aTexture)
+void SpriteAnim::SetTexture(sf::Texture * aTexture)
 {
 	myTexture = aTexture;
 	mySprite.setTexture(*aTexture);
-	myScale = mySprite.getScale();
+}
+
+sf::Texture *SpriteAnim::GetTexture()
+{
+	return myTexture;
 }
 
 sf::Sprite& SpriteAnim::GetSprite()
@@ -60,7 +59,7 @@ void SpriteAnim::SetSprite(sf::Sprite aSprite)
 
 void SpriteAnim::SetFrame(int * anIndex)
 {
-	myCurrentFrame = *anIndex;
+	myCurrentFrame = (float)*anIndex;
 }
 
 void SpriteAnim::SetPosition(sf::Vector2f aPosition)
@@ -78,7 +77,14 @@ void SpriteAnim::SetAnimation(int aRowCount, int aColumnCount, int aFrameCount, 
 	myFramerate = aFramerate;
 
 	//Sets the origin in the middle
-	mySprite.setOrigin(myTexture->getSize().x / myColumnCount / 2.0f, myTexture->getSize().y / myRowCount / 2.0f);
+	try 
+	{
+		mySprite.setOrigin(myTexture->getSize().x / myColumnCount / 2.0f, myTexture->getSize().y / myRowCount / 2.0f);
+	}
+	catch(...)
+	{
+		printf("\nFailed to set Animated Sprite Origin.");
+	}
 }
 
 void SpriteAnim::UpdateAnimation(float & aDeltaTime, sf::Vector2f &aPosition, bool aAnimateFlag)
@@ -95,11 +101,13 @@ void SpriteAnim::UpdateAnimation(float & aDeltaTime, sf::Vector2f &aPosition, bo
 		myCurrentFrame = 0;
 	}
 
-	sf::IntRect tempIntegerRect(
+	sf::IntRect tempIntegerRect
+	(
 		myTexture->getSize().x / myColumnCount * static_cast<int>(floor(myCurrentFrame)),
 		myTexture->getSize().y * (myRowCount - 1),
 		myTexture->getSize().x / myColumnCount,
-		myTexture->getSize().y / myRowCount);
+		myTexture->getSize().y / myRowCount
+	);
 
 	mySprite.setTextureRect(tempIntegerRect);
 }

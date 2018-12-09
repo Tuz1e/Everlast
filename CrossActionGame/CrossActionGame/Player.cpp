@@ -28,9 +28,9 @@ void Player::LoadContent(TextureContainer *aTxtrContainer)
 	SetSpriteSheet(IDLE, PLAYER_IDLE, aTxtrContainer);
 	SetSpriteSheet(RUN, PLAYER_RUN, aTxtrContainer);
 
-	mySprite.SetTexture(mySpriteSheets[PLAYER_RUN]->myTexture);
-	mySprite.SetAnimation(mySpriteSheets[PLAYER_RUN]->myRows, mySpriteSheets[PLAYER_RUN]->myColumns, mySpriteSheets[PLAYER_RUN]->myFrames, myAnimationSpeed);
+	mySprite.SetTexture(mySpriteSheets[RUN]->myTexture);
 	mySprite.SetScale(3.0f, 3.0f);
+	mySprite.SetAnimation(mySpriteSheets[PLAYER_RUN]->myRows, mySpriteSheets[PLAYER_RUN]->myColumns, mySpriteSheets[PLAYER_RUN]->myFrames, myAnimationSpeed);
 
 	printf("\nLoaded player content.");
 }

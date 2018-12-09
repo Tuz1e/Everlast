@@ -1,6 +1,7 @@
 #include "pch.h"
 #include "Object.h"
 
+
 Object::Object()
 {
 }
@@ -14,12 +15,29 @@ void Object::LoadContent(TextureContainer * aTxtrContainer)
 	SetEntityObject(BARREL, 0, aTxtrContainer);
 	AddEntityObject(0, BARREL_BROKEN, 1, aTxtrContainer);
 
-	myEntities[0]->SetPosition(sf::Vector2f(250, 250));
-	myEntities[0]->SetSpriteTexture(&myEntities[0]->GetSpriteSheetTexture(BARREL));
+	myEntities[0]->mySprite.SetPosition(sf::Vector2f(250, 250));
+	myEntities[0]->mySprite.SetTexture(myEntities[0]->GetSpriteSheets()[BARREL]->myTexture);
+
+	myEntities[0]->mySprite.SetAnimation
+	(
+		myEntities[0]->GetSpriteSheets()[BARREL]->myRows,
+		myEntities[0]->GetSpriteSheets()[BARREL]->myColumns,
+		myEntities[0]->GetSpriteSheets()[BARREL]->myFrames,
+		4.5f
+	);
 }
 
 void Object::Update(float & aDeltaTime)
 {
+	for (size_t i = 0; i < myEntities.size(); i++)
+	{
+		myEntities[i]->mySprite.UpdateAnimation
+		(
+			aDeltaTime, 
+			myEntities[i]->GetPosition(),
+			true
+		);
+	}
 }
 
 void Object::Render(sf::RenderWindow & aWindow)

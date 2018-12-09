@@ -4,8 +4,8 @@
 #define PLAYER_RUN_TEXTURE "Content/Textures/Player/player_run.png"
 #define PLAYER_IDLE_TEXTURE "Content/Textures/Player/player_idle.png"
 
-#define BARREL_TEXTURE "Content\Textures\Objects\barrel.png"
-#define BARREL_BROKEN_TEXTURE "Content\Textures\Objects\barrel_broken.png"
+#define BARREL_TEXTURE "Content/Textures/Objects/barrel.png"
+#define BARREL_BROKEN_TEXTURE "Content/Textures/Objects/barrel_broken.png"
 
 #include <vector>
 

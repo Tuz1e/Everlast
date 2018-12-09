@@ -3,7 +3,6 @@
 
 #include "SpriteAnim.h"
 #include "TextureContainer.h"
-#include "pch.h"
 
 class Entity
 {
@@ -16,12 +15,16 @@ public:
 	virtual void Render(sf::RenderWindow &aWindow);
 	virtual void SetSpriteSheet(unsigned aTxtrIndex, unsigned anIndex, TextureContainer * aTxtrContainer);
 	virtual void SetSpriteTexture(sf::Texture *aTexture);
+	virtual void SetPosition(sf::Vector2f aPos);
+	virtual sf::Vector2f &GetPosition();
+	virtual std::vector<Textures*> GetSpriteSheets();
 
-	sf::Texture GetSpriteSheetTexture(const unsigned &anIndex);
-	void SetPosition(sf::Vector2f aPos);
+
+	sf::Texture *GetSpriteSheetTexture(const unsigned &anIndex);
+	SpriteAnim mySprite;
+	
 
 protected:
-	SpriteAnim mySprite;
 	sf::Vector2f
 		mySpeed,
 		myVelocity,

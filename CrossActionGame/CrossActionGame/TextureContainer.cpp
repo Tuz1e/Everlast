@@ -35,7 +35,7 @@ void TextureContainer::SetTextures(unsigned anIndex, const std::string &aLocatio
 	myTextures[anIndex]->myRows = aRowCount;
 	myTextures[anIndex]->myColumns = aColumnCount;
 	myTextures[anIndex]->myFrames = aFrameCount;
-	std::cout << myTextures.size() << std::endl;
+	//std::cout << myTextures.size() << std::endl;
 }
 
 sf::Texture *TextureContainer::GetTexture(unsigned anIndex)

@@ -32,12 +32,13 @@ inline void Entity::SetSpriteSheet(unsigned aTxtrIndex, unsigned anIndex, Textur
 
 inline void Entity::SetSpriteTexture(sf::Texture *aTexture)
 {
-	mySprite.SetTexture(aTexture);
+	//mySprite.SetTexture(aTexture);
+	mySprite.GetSprite().setTexture(*aTexture);
 }
 
-sf::Texture Entity::GetSpriteSheetTexture(const unsigned & anIndex)
+sf::Texture * Entity::GetSpriteSheetTexture(const unsigned & anIndex)
 {
-	return *mySpriteSheets[anIndex]->myTexture;
+	return mySpriteSheets[anIndex]->myTexture;
 }
 
 inline void Entity::SetPosition(sf::Vector2f aPos)
@@ -45,7 +46,17 @@ inline void Entity::SetPosition(sf::Vector2f aPos)
 	myPosition = aPos;
 }
 
-inline void SpriteAnim::SetTexture(sf::Texture * aTexture)
+sf::Vector2f & Entity::GetPosition()
 {
-	mySprite.setTexture(*aTexture);
+	return myPosition;
 }
+
+std::vector<Textures*> Entity::GetSpriteSheets()
+{
+	return mySpriteSheets;
+}
+
+//inline void SpriteAnim::SetTexture(sf::Texture * aTexture)
+//{
+//	mySprite.setTexture(*aTexture);
+//}
