@@ -15,8 +15,9 @@ public:
 	virtual void Update(float &aDeltaTime);
 	virtual void Render(sf::RenderWindow &aWindow);
 	virtual void SetSpriteSheet(unsigned aTxtrIndex, unsigned anIndex, TextureContainer * aTxtrContainer);
+	virtual void SetSpriteTexture(sf::Texture *aTexture);
 
-	void SetTexture(sf::Texture *aTexture);
+	sf::Texture GetSpriteSheetTexture(const unsigned &anIndex);
 	void SetPosition(sf::Vector2f aPos);
 
 protected:

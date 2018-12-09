@@ -20,7 +20,6 @@ void Game::LoadContent(sf::RenderWindow &aWindow)
 {
 	TextureContainer *tempTextureCon = new TextureContainer();
 
-	//myWorldManager.LoadContent(tempTextureCon, aWindow);
 	myPlayer.LoadContent(tempTextureCon);
 	myObjects.LoadContent(tempTextureCon);
 
@@ -35,7 +34,6 @@ void Game::Update(float &aDeltaTime)
 
 void Game::Render(sf::RenderWindow &aWindow)
 {
-	//myWorldManager.Render(aWindow);
 	myPlayer.Render(aWindow);
 	myObjects.Render(aWindow);
 }

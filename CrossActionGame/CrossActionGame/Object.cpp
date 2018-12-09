@@ -14,8 +14,8 @@ void Object::LoadContent(TextureContainer * aTxtrContainer)
 	SetEntityObject(BARREL, 0, aTxtrContainer);
 	AddEntityObject(0, BARREL_BROKEN, 1, aTxtrContainer);
 
-	//myEntities[0]->SetTexture(myEntities[0]->mySpriteSheets)
 	myEntities[0]->SetPosition(sf::Vector2f(250, 250));
+	myEntities[0]->SetSpriteTexture(&myEntities[0]->GetSpriteSheetTexture(BARREL));
 }
 
 void Object::Update(float & aDeltaTime)

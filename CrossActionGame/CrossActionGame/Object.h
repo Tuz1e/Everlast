@@ -14,7 +14,6 @@ public:
 	void Render(sf::RenderWindow &aWindow) override;
 	void SetEntityObject(unsigned aTxtrIndex, unsigned aSheetIndex, TextureContainer * aTxtrContainer);
 	void AddEntityObject(unsigned anEntityIndex, unsigned aTxtrIndex, unsigned aSheetIndex, TextureContainer *aTxtrContainer);
-	//void Break();
 
 	int myEntityAmount;
 	std::vector<Entity*> myEntities;

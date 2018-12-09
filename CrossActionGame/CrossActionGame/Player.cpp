@@ -11,7 +11,6 @@ Player::Player()
 	myHealth = 150;
 	mySpeed = sf::Vector2f(2.5f, 2.5f);
 	myPosition = sf::Vector2f(10.0f, 10.0f);
-	//myAnimateFlag = false;
 }
 
 Player::~Player()
@@ -56,30 +55,6 @@ void Player::Update(float & aDeltaTime)
 		myVelocity.x = (mySpeed.x * aDeltaTime);
 	}
 
-	//if (myVelocity == sf::Vector2f(0, 0) && !myIdleFlag)
-	//{
-	//	mySprite.SetTexture(mySpriteSheets[PLAYER_IDLE]);
-	//	mySprite.SetAnimation(1, 13, 13, myAnimationSpeed);
-	//	myIdleFlag = true;
-	//}
-	//else if (myVelocity != sf::Vector2f(0, 0) && myIdleFlag)
-	//{
-	//	mySprite.SetTexture(mySpriteSheets[PLAYER_RUN]);
-	//	mySprite.SetAnimation(1, 8, 8, myAnimationSpeed);
-	//	myIdleFlag = false;
-	//	myIdleCounter = 0;
-	//}
-
-	//if (myVelocity == sf::Vector2f(0, 0))
-	//{
-	//	mySprite.SetTexture(mySpriteSheets[PLAYER_IDLE]);
-	//	mySprite.SetAnimation(1, 13, 13, myAnimationSpeed);
-	//}
-	//else
-	//{
-	//	mySprite.SetTexture(mySpriteSheets[PLAYER_RUN]);
-	//	mySprite.SetAnimation(1, 8, 8, myAnimationSpeed);
-	//}
 	myPosition += myVelocity;
 	mySprite.UpdateAnimation(aDeltaTime, myPosition, (myVelocity != sf::Vector2f(0, 0)) ? true : false);
 }

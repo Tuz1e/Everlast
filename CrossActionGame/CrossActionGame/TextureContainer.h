@@ -7,7 +7,6 @@
 #define BARREL_TEXTURE "Content\Textures\Objects\barrel.png"
 #define BARREL_BROKEN_TEXTURE "Content\Textures\Objects\barrel_broken.png"
 
-#include <SFML/Graphics/Texture.hpp>
 #include <vector>
 
 class TextureContainer

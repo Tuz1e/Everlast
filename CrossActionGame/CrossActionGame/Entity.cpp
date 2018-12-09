@@ -21,7 +21,7 @@ void Entity::Render(sf::RenderWindow & aWindow)
 {
 }
 
-void Entity::SetSpriteSheet(unsigned aTxtrIndex, unsigned anIndex, TextureContainer * aTxtrContainer)
+inline void Entity::SetSpriteSheet(unsigned aTxtrIndex, unsigned anIndex, TextureContainer * aTxtrContainer)
 {
 	mySpriteSheets.push_back(new Textures);
 	mySpriteSheets[anIndex]->myTexture = aTxtrContainer->GetTexture(aTxtrIndex);
@@ -30,12 +30,22 @@ void Entity::SetSpriteSheet(unsigned aTxtrIndex, unsigned anIndex, TextureContai
 	mySpriteSheets[anIndex]->myFrames = aTxtrContainer->GetFrames(aTxtrIndex);
 }
 
-void Entity::SetPosition(sf::Vector2f aPos)
+inline void Entity::SetSpriteTexture(sf::Texture *aTexture)
+{
+	mySprite.SetTexture(aTexture);
+}
+
+sf::Texture Entity::GetSpriteSheetTexture(const unsigned & anIndex)
+{
+	return *mySpriteSheets[anIndex]->myTexture;
+}
+
+inline void Entity::SetPosition(sf::Vector2f aPos)
 {
 	myPosition = aPos;
 }
 
-void SpriteAnim::SetTexture(sf::Texture * aTexture)
+inline void SpriteAnim::SetTexture(sf::Texture * aTexture)
 {
 	mySprite.setTexture(*aTexture);
 }
