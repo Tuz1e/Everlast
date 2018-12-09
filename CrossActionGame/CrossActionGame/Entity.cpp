@@ -55,8 +55,3 @@ std::vector<Textures*> Entity::GetSpriteSheets()
 {
 	return mySpriteSheets;
 }
-
-//inline void SpriteAnim::SetTexture(sf::Texture * aTexture)
-//{
-//	mySprite.setTexture(*aTexture);
-//}

@@ -22,13 +22,13 @@ public:
 
 	sf::Texture *GetSpriteSheetTexture(const unsigned &anIndex);
 	SpriteAnim mySprite;
+	sf::Vector2f myPosition;
 	
 
 protected:
 	sf::Vector2f
 		mySpeed,
-		myVelocity,
-		myPosition;
+		myVelocity;
 	int myHealth;
 	std::vector<Textures*> mySpriteSheets;
 };

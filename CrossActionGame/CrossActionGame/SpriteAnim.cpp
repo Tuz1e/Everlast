@@ -62,9 +62,9 @@ void SpriteAnim::SetFrame(int * anIndex)
 	myCurrentFrame = (float)*anIndex;
 }
 
-void SpriteAnim::SetPosition(sf::Vector2f aPosition)
+void SpriteAnim::SetPosition(float aX, float aY)
 {
-	mySprite.setPosition(aPosition);
+	mySprite.setPosition(sf::Vector2f(aX, aY));
 }
 
 void SpriteAnim::SetAnimation(int aRowCount, int aColumnCount, int aFrameCount, float aFramerate)

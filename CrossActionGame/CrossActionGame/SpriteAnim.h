@@ -18,7 +18,7 @@ public:
 	void Flip(FlipSides aSide);
 	void SetSprite(sf::Sprite aSprite);
 	void SetFrame(int *anIndex);
-	void SetPosition(sf::Vector2f aPosition);
+	void SetPosition(float aX, float aY);
 	void SetAnimation(int aRowCount, int aColumnCount, int aFrameCount, float aFramerate);
 	void UpdateAnimation(float &aDeltaTime, sf::Vector2f &aPosition, bool aAnimateFlag);
 
