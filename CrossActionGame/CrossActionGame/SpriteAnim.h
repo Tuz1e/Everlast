@@ -13,7 +13,6 @@ public:
 	SpriteAnim();
 	~SpriteAnim();
 
-	void LoadFromFile(const std::string &aFileName);
 	void SetTexture(sf::Texture *aTexture);
 	void Flip(FlipSides aSide);
 	void SetSprite(sf::Sprite aSprite);

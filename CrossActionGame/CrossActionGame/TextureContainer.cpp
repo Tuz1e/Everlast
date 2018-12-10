@@ -7,8 +7,7 @@ TextureContainer::TextureContainer()
 	{
 		SetTextures(PLAYER_IDLE, PLAYER_IDLE_TEXTURE, 1, 13, 13);
 		SetTextures(PLAYER_RUN, PLAYER_RUN_TEXTURE, 1, 8, 8);
-		SetTextures(BARREL, BARREL_TEXTURE, 2, 3, 6);
-		SetTextures(BARREL_BROKEN, BARREL_BROKEN_TEXTURE, 1, 4, 4);
+		SetTextures(SKELETON_WALK, SKELETON_WALK_TEXTURE, 1, 13, 13);
 
 		printf("\nLoaded textures.");
 	}

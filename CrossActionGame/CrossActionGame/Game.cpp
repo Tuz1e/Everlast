@@ -1,6 +1,5 @@
 #include "pch.h"
 #include "Game.h"
-#include "MathFunc.h"
 
 class TextureContainer;
 
@@ -22,18 +21,20 @@ void Game::LoadContent(sf::RenderWindow &aWindow)
 	TextureContainer tempTextureCon;
 
 	myPlayer.LoadContent(tempTextureCon);
-
+	mySkW.LoadContent(tempTextureCon);
 	printf("\nLoaded Content.");
 }
 
 void Game::Update(float &aDeltaTime)
 {
 	myPlayer.Update(aDeltaTime);
+	mySkW.Update(aDeltaTime);
 }
 
 void Game::Render(sf::RenderWindow &aWindow)
 {
 	myPlayer.Render(aWindow);
+	mySkW.Render(aWindow);
 }
 
 void Game::LateRender(sf::RenderWindow & aWindow)

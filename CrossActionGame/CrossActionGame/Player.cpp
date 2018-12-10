@@ -10,7 +10,7 @@ Player::Player()
 	myAnimationSpeed = 11.0f;
 	myHealth = 150;
 	mySpeed = sf::Vector2f(2.5f, 2.5f);
-	myPosition = sf::Vector2f(10.0f, 10.0f);
+	myPosition = sf::Vector2f(100.0f, 100.0f);
 }
 
 Player::~Player()
@@ -25,8 +25,8 @@ Player::~Player()
 
 void Player::LoadContent(TextureContainer &aTxtrContainer)
 {
-	SetSpriteSheet(IDLE, PLAYER_IDLE, &aTxtrContainer);
-	SetSpriteSheet(RUN, PLAYER_RUN, &aTxtrContainer);
+	SetSpriteSheet(PLAYER_IDLE, IDLE, &aTxtrContainer);
+	SetSpriteSheet(PLAYER_RUN, RUN, &aTxtrContainer);
 
 	mySprite.SetTexture(mySpriteSheets[RUN]->myTexture);
 	mySprite.SetScale(3.0f, 3.0f);

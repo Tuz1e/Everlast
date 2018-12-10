@@ -2,6 +2,8 @@
 #include "SpriteAnim.h"
 #include <math.h>
 
+//FIX: Can only animate 1 row animations
+
 SpriteAnim::SpriteAnim()
 {
 	myContentFolder = "Content";
@@ -11,16 +13,6 @@ SpriteAnim::~SpriteAnim()
 {
 	PtrDelete(myTexture);
 	printf("\nDeleted SpriteAnim txtrptr.");
-}
-
-void SpriteAnim::LoadFromFile(const std::string &aFileName)
-{
-	//if (!myTexture.loadFromFile((myContentFolder + "/" + aFileName)))
-	//{
-	//	std::cout << "ERROR#Loading " + aFileName << std::endl;
-	//}
-	//mySprite.setTexture(myTexture);
-	//myScale = mySprite.getScale();
 }
 
 void SpriteAnim::SetTexture(sf::Texture * aTexture)

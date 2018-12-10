@@ -7,6 +7,7 @@
 
 #include "Player.h"
 #include "WorldManager.h"
+#include "SkeletonWarrior.h"
 
 class Game
 {
@@ -22,9 +23,8 @@ public:
 
 	WorldManager myWorldManager;
 	Player myPlayer;
-
-	sf::Sprite mySprite;
-	sf::Sprite mySprite2;
+	SkeletonWarrior mySkW;
+	//Barrel myBarrel;
 };
 
 #endif

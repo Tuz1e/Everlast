@@ -15,10 +15,15 @@ void Entity::LoadContent(TextureContainer &aTxtrContainer)
 
 void Entity::Update(float & aDeltaTime)
 {
+	if (myAnimateFlag) 
+	{
+		mySprite.UpdateAnimation(aDeltaTime, myPosition, true);
+	}
 }
 
 void Entity::Render(sf::RenderWindow & aWindow)
 {
+	mySprite.Render(aWindow);
 }
 
 inline void Entity::SetSpriteSheet(unsigned aTxtrIndex, unsigned anIndex, TextureContainer * aTxtrContainer)
@@ -58,4 +63,14 @@ void Entity::SetAnimation(int aRowCount, int aColumnCount, int aFrameCount, floa
 void Entity::UpdateAnimation(float & aDeltaTime, sf::Vector2f & aPosition, bool aAnimateFlag)
 {
 	mySprite.UpdateAnimation(aDeltaTime, aPosition, aAnimateFlag);
+}
+
+SpriteAnim Entity::GetSprite()
+{
+	return mySprite;
+}
+
+void Entity::SetAnimateFlag(bool aStatement)
+{
+	myAnimateFlag = aStatement;
 }

@@ -20,6 +20,8 @@ public:
 	virtual std::vector<Textures*> GetSpriteSheets();
 	virtual void SetAnimation(int aRowCount, int aColumnCount, int aFrameCount, float aFramerate);
 	virtual void UpdateAnimation(float & aDeltaTime, sf::Vector2f &aPosition, bool aAnimateFlag);
+	virtual SpriteAnim GetSprite();
+	virtual void SetAnimateFlag(bool aStatement);
 
 protected:
 	sf::Vector2f
@@ -27,9 +29,9 @@ protected:
 		myVelocity,
 		myPosition;
 	int myHealth;
-	Textures *myTexture;
 	std::vector<Textures*> mySpriteSheets;
 	SpriteAnim mySprite;
+	bool myAnimateFlag;
 };
 
 #endif
