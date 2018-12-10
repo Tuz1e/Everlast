@@ -19,11 +19,9 @@ public:
 	virtual sf::Vector2f &GetPosition();
 	virtual std::vector<Textures*> GetSpriteSheets();
 
-
 	sf::Texture *GetSpriteSheetTexture(const unsigned &anIndex);
 	SpriteAnim mySprite;
 	sf::Vector2f myPosition;
-	
 
 protected:
 	sf::Vector2f

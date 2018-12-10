@@ -1,7 +1,6 @@
 #include "pch.h"
 #include "Object.h"
 
-
 Object::Object()
 {
 }
@@ -17,17 +16,17 @@ Object::~Object()
 
 void Object::LoadContent(TextureContainer * aTxtrContainer)
 {
-	SetEntityObject(BARREL, 0, aTxtrContainer);
-	AddEntityObject(0, BARREL_BROKEN, 1, aTxtrContainer);
+	SetEntityObject(BARREL, BARREL_OBJECT, BARREL_OBJECT, aTxtrContainer);
+	AddEntityObject(BARREL_OBJECT, BARREL_BROKEN, 1, aTxtrContainer);
 
 	for (size_t i = 0; i < myEntities.size(); i++)
 	{
 		myEntities[i]->myPosition = sf::Vector2f(100, 100);
 	}
 
-	myEntities[0]->mySprite.SetTexture(myEntities[0]->GetSpriteSheets()[0]->myTexture);
-	myEntities[0]->mySprite.SetScale(3.0f, 3.0f);
-	myEntities[0]->mySprite.SetAnimation
+	myEntities[BARREL_OBJECT]->mySprite.SetTexture(myEntities[BARREL_OBJECT]->GetSpriteSheets()[0]->myTexture);
+	myEntities[BARREL_OBJECT]->mySprite.SetScale(3.0f, 3.0f);
+	myEntities[BARREL_OBJECT]->mySprite.SetAnimation
 	(
 		myEntities[0]->GetSpriteSheets()[0]->myRows,
 		myEntities[0]->GetSpriteSheets()[0]->myColumns,
@@ -45,7 +44,7 @@ void Object::Update(float & aDeltaTime)
 		myEntities[i]->mySprite.UpdateAnimation
 		(
 			aDeltaTime,
-			myPosition,
+			myEntities[i]->myPosition,
 			true
 		);
 	}
@@ -59,12 +58,11 @@ void Object::Render(sf::RenderWindow & aWindow)
 	}
 }
 
-void Object::SetEntityObject(unsigned aTxtrIndex, unsigned aSheetIndex, TextureContainer * aTxtrContainer)
+void Object::SetEntityObject(unsigned aTxtrIndex, unsigned aSpritesheetIndex, unsigned anIndex, TextureContainer * aTxtrContainer)
 {
 	myEntities.push_back(new Entity());
-	int tempValue = myEntities.size() - 1;
-	myEntities[tempValue]->SetSpriteSheet(aTxtrIndex, aSheetIndex, aTxtrContainer);
-	myEntities[tempValue]->mySprite.SetPosition(0, 0);
+	myEntities[anIndex]->SetSpriteSheet(aTxtrIndex, aSpritesheetIndex, aTxtrContainer);
+	myEntities[anIndex]->mySprite.SetPosition(0, 0);
 }
 
 void Object::AddEntityObject(unsigned anEntityIndex, unsigned aTxtrIndex, unsigned aSheetIndex, TextureContainer * aTxtrContainer)
