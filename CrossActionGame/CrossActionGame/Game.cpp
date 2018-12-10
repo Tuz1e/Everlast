@@ -1,7 +1,8 @@
 #include "pch.h"
 #include "Game.h"
 #include "MathFunc.h"
-#include "TextureContainer.h"
+
+class TextureContainer;
 
 Game::Game()
 {
@@ -18,10 +19,9 @@ void Game::Initialize()
 
 void Game::LoadContent(sf::RenderWindow &aWindow)
 {
-	TextureContainer *tempTextureCon = new TextureContainer();
+	TextureContainer tempTextureCon;
 
 	myPlayer.LoadContent(tempTextureCon);
-	myObjects.LoadContent(tempTextureCon);
 
 	printf("\nLoaded Content.");
 }
@@ -29,13 +29,11 @@ void Game::LoadContent(sf::RenderWindow &aWindow)
 void Game::Update(float &aDeltaTime)
 {
 	myPlayer.Update(aDeltaTime);
-	myObjects.Update(aDeltaTime);
 }
 
 void Game::Render(sf::RenderWindow &aWindow)
 {
 	myPlayer.Render(aWindow);
-	myObjects.Render(aWindow);
 }
 
 void Game::LateRender(sf::RenderWindow & aWindow)

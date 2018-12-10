@@ -10,7 +10,7 @@ public:
 	Entity();
 	~Entity();
 
-	virtual void LoadContent(TextureContainer *aTxtrContainer);
+	virtual void LoadContent(TextureContainer &aTxtrContainer);
 	virtual void Update(float &aDeltaTime);
 	virtual void Render(sf::RenderWindow &aWindow);
 	virtual void SetSpriteSheet(unsigned aTxtrIndex, unsigned anIndex, TextureContainer * aTxtrContainer);
@@ -18,17 +18,18 @@ public:
 	virtual void SetPosition(sf::Vector2f aPos);
 	virtual sf::Vector2f &GetPosition();
 	virtual std::vector<Textures*> GetSpriteSheets();
-
-	sf::Texture *GetSpriteSheetTexture(const unsigned &anIndex);
-	SpriteAnim mySprite;
-	sf::Vector2f myPosition;
+	virtual void SetAnimation(int aRowCount, int aColumnCount, int aFrameCount, float aFramerate);
+	virtual void UpdateAnimation(float & aDeltaTime, sf::Vector2f &aPosition, bool aAnimateFlag);
 
 protected:
 	sf::Vector2f
 		mySpeed,
-		myVelocity;
+		myVelocity,
+		myPosition;
 	int myHealth;
+	Textures *myTexture;
 	std::vector<Textures*> mySpriteSheets;
+	SpriteAnim mySprite;
 };
 
 #endif

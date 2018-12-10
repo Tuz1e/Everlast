@@ -9,7 +9,7 @@ Entity::~Entity()
 {
 }
 
-void Entity::LoadContent(TextureContainer *aTxtrContainer)
+void Entity::LoadContent(TextureContainer &aTxtrContainer)
 {
 }
 
@@ -32,13 +32,7 @@ inline void Entity::SetSpriteSheet(unsigned aTxtrIndex, unsigned anIndex, Textur
 
 inline void Entity::SetSpriteTexture(sf::Texture *aTexture)
 {
-	//mySprite.SetTexture(aTexture);
-	mySprite.GetSprite().setTexture(*aTexture);
-}
-
-sf::Texture * Entity::GetSpriteSheetTexture(const unsigned & anIndex)
-{
-	return mySpriteSheets[anIndex]->myTexture;
+	mySprite.SetTexture(aTexture);
 }
 
 inline void Entity::SetPosition(sf::Vector2f aPos)
@@ -54,4 +48,14 @@ sf::Vector2f & Entity::GetPosition()
 std::vector<Textures*> Entity::GetSpriteSheets()
 {
 	return mySpriteSheets;
+}
+
+void Entity::SetAnimation(int aRowCount, int aColumnCount, int aFrameCount, float aFramerate)
+{
+	mySprite.SetAnimation(aRowCount, aColumnCount, aFrameCount, aFramerate);
+}
+
+void Entity::UpdateAnimation(float & aDeltaTime, sf::Vector2f & aPosition, bool aAnimateFlag)
+{
+	mySprite.UpdateAnimation(aDeltaTime, aPosition, aAnimateFlag);
 }

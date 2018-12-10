@@ -16,6 +16,7 @@ public:
 	~TextureContainer();
 	void SetTextures(unsigned anIndex, const std::string &aLocation, const int &aRowCount, const int &aColumnCount, const int &aFrameCount);
 
+	Textures *GetTextures(unsigned anIndex);
 	sf::Texture *GetTexture(unsigned anIndex);
 	int GetRows(unsigned anIndex);
 	int GetColumns(unsigned anIndex);

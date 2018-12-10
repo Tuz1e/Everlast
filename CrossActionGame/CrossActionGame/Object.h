@@ -3,22 +3,22 @@
 
 #include "Entity.h"
 
-#define BARREL_OBJECT 0
-
-class Object
+class Object : public Entity
 {
 public:
-	Object();
+	Object
+	(
+		Textures *aTexture,
+		const sf::Vector2f &aPosition,
+		const sf::Vector2f &aSpeed,
+		sf::Vector2f aScale = sf::Vector2f(1.0f, 1.0f)
+	);
 	~Object();
 
-	void LoadContent(TextureContainer *aTxtrContainer);
-	void Update(float &aDeltaTime);
-	void Render(sf::RenderWindow &aWindow);
-	void SetEntityObject(unsigned aTxtrIndex, unsigned aSpriteSheetIndex, unsigned anIndex, TextureContainer * aTxtrContainer);
-	void AddEntityObject(unsigned anEntityIndex, unsigned aTxtrIndex, unsigned aSheetIndex, TextureContainer *aTxtrContainer);
+	SpriteAnim *GetSprite();
+	Textures *GetTextures();
 
-	int myEntityAmount;
-	std::vector<Entity*> myEntities;
+	//void SetSprite(sf::Texture *aTexture, sf::Vector2f &aPosition, sf::Vector2f &aSpeed, );
 };
 
-#endif 
+#endif

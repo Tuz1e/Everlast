@@ -23,10 +23,10 @@ Player::~Player()
 	}
 }
 
-void Player::LoadContent(TextureContainer *aTxtrContainer)
+void Player::LoadContent(TextureContainer &aTxtrContainer)
 {
-	SetSpriteSheet(IDLE, PLAYER_IDLE, aTxtrContainer);
-	SetSpriteSheet(RUN, PLAYER_RUN, aTxtrContainer);
+	SetSpriteSheet(IDLE, PLAYER_IDLE, &aTxtrContainer);
+	SetSpriteSheet(RUN, PLAYER_RUN, &aTxtrContainer);
 
 	mySprite.SetTexture(mySpriteSheets[RUN]->myTexture);
 	mySprite.SetScale(3.0f, 3.0f);
