@@ -1,17 +1,21 @@
 #include "pch.h"
 #include "SkeletonWarrior.h"
-
+#include "PostNord.h"
 
 SkeletonWarrior::SkeletonWarrior()
 {
 	myHealth = 75;
-	mySpeed = sf::Vector2f(2.5f, 2.5f);
+	mySpeed = sf::Vector2f(1.5f, 1.5f);
 	myPosition = sf::Vector2f(100.0f, 100.0f);
 }
 
-
 SkeletonWarrior::~SkeletonWarrior()
 {
+}
+
+void SkeletonWarrior::Initialize()
+{
+	PostNord::Subscribe();
 }
 
 void SkeletonWarrior::LoadContent(TextureContainer & aTxtrContainer)

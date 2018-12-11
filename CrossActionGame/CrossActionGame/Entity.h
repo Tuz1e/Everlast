@@ -10,6 +10,7 @@ public:
 	Entity();
 	~Entity();
 
+	virtual void Initialize();
 	virtual void LoadContent(TextureContainer &aTxtrContainer);
 	virtual void Update(float &aDeltaTime);
 	virtual void Render(sf::RenderWindow &aWindow);

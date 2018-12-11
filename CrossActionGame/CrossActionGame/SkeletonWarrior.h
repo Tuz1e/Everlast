@@ -11,6 +11,7 @@ public:
 	SkeletonWarrior();
 	~SkeletonWarrior();
 
+	void Initialize() override;
 	void LoadContent(TextureContainer &aTxtrContainer) override;
 	void Update(float &aDeltaTime) override;
 	void Render(sf::RenderWindow &aWindow) override;
