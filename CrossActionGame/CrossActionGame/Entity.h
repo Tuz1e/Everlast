@@ -4,13 +4,21 @@
 #include "SpriteAnim.h"
 #include "TextureContainer.h"
 
+enum ActionState 
+{
+	IDLE,
+	WALK,
+	ATTACK,
+	HIT
+};
+
 class Entity
 {
 public:
 	Entity();
 	~Entity();
 
-	virtual void Initialize();
+
 	virtual void LoadContent(TextureContainer &aTxtrContainer);
 	virtual void Update(float &aDeltaTime);
 	virtual void Render(sf::RenderWindow &aWindow);
@@ -29,6 +37,7 @@ protected:
 		mySpeed,
 		myVelocity,
 		myPosition;
+	ActionState myActionState;
 	int myHealth;
 	std::vector<Textures*> mySpriteSheets;
 	SpriteAnim mySprite;

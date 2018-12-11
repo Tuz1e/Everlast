@@ -28,7 +28,7 @@ void Game::LoadContent(sf::RenderWindow &aWindow)
 void Game::Update(float &aDeltaTime)
 {
 	myPlayer.Update(aDeltaTime);
-	mySkW.Update(aDeltaTime);
+	mySkW.Update(aDeltaTime, myPlayer.GetPosition());
 }
 
 void Game::Render(sf::RenderWindow &aWindow)

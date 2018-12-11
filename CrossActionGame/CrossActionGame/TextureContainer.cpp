@@ -5,9 +5,16 @@ TextureContainer::TextureContainer()
 {
 	try
 	{
+
 		SetTextures(PLAYER_IDLE, PLAYER_IDLE_TEXTURE, 1, 13, 13);
-		SetTextures(PLAYER_RUN, PLAYER_RUN_TEXTURE, 1, 8, 8);
+		SetTextures(PLAYER_WALK, PLAYER_RUN_TEXTURE, 1, 8, 8);
+		SetTextures(PLAYER_ATTACK, PLAYER_ATTACK_TEXTURE, 1, 10, 10);
+		SetTextures(PLAYER_HIT, PLAYER_HIT_TEXTURE, 1, 4, 4);
+
+		SetTextures(SKELETON_IDLE, SKELETON_IDLE_TEXTURE, 1, 11, 11);
 		SetTextures(SKELETON_WALK, SKELETON_WALK_TEXTURE, 1, 13, 13);
+		SetTextures(SKELETON_ATTACK, SKELETON_ATTACK_TEXTURE, 1, 18, 18);
+		SetTextures(SKELETON_HIT, SKELETON_HIT_TEXTURE, 1, 8, 8);
 
 		printf("\nLoaded textures.");
 	}
