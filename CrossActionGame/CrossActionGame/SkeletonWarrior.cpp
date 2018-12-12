@@ -7,9 +7,10 @@ SkeletonWarrior::SkeletonWarrior()
 {
 	myHealth = 75;
 	mySpeed = sf::Vector2f(2.0f, 2.0f);
-	myPosition = sf::Vector2f(100.0f, 100.0f);
-	myRecogDistance = 10.0f;
+	myPosition = sf::Vector2f(500.0f, 500.0f);
+	myRecogDistance = 100.0f;
 	myActionState = ActionState::IDLE;
+	myTargetAcquired = false;
 }
 
 SkeletonWarrior::~SkeletonWarrior()
@@ -18,7 +19,6 @@ SkeletonWarrior::~SkeletonWarrior()
 
 void SkeletonWarrior::Initialize()
 {
-
 }
 
 void SkeletonWarrior::LoadContent(TextureContainer & aTxtrContainer)
@@ -26,15 +26,8 @@ void SkeletonWarrior::LoadContent(TextureContainer & aTxtrContainer)
 	SetSpriteSheet(SKELETON_IDLE, IDLE, &aTxtrContainer); //Sets the idle animation
 	SetSpriteSheet(SKELETON_WALK, WALK, &aTxtrContainer); //Sets the walking animation
 
-	mySprite.SetTexture(mySpriteSheets[myActionState]->myTexture);
+	SetActionState(4.5f);
 	mySprite.SetScale(3.0f, 3.0f);
-	mySprite.SetAnimation
-	(
-		mySpriteSheets[myActionState]->myRows, 
-		mySpriteSheets[myActionState]->myColumns, 
-		mySpriteSheets[myActionState]->myFrames, 
-		9.0f
-	);
 }
 
 void SkeletonWarrior::Update(float & aDeltaTime, sf::Vector2f &aPosition)
@@ -43,13 +36,24 @@ void SkeletonWarrior::Update(float & aDeltaTime, sf::Vector2f &aPosition)
 	myVelocity.y = aPosition.y - myPosition.y;
 	float tempHypo = sqrt((myVelocity.x * myVelocity.x) + (myVelocity.y * myVelocity.y)); //Gets the hypotenuse
 
-	if (tempHypo <= myRecogDistance) 
+	switch (myActionState)
 	{
-		if (tempHypo != 0) 
+	case IDLE:
+		if (tempHypo <= myRecogDistance)
+		{
+			myTargetAcquired = true;
+			myActionState = ActionState::WALK;
+			SetActionState(9.0f);
+		}
+		break;
+	case WALK:
+		if (tempHypo != 0)
 		{
 			myPosition.y += aDeltaTime * mySpeed.y * (myVelocity.y / tempHypo);
 			myPosition.x += aDeltaTime * mySpeed.x * (myVelocity.x / tempHypo);
+			myDirection = aPosition;
 		}
+		break;
 	}
 
 	mySprite.UpdateAnimation(aDeltaTime, myPosition, true);
@@ -57,14 +61,6 @@ void SkeletonWarrior::Update(float & aDeltaTime, sf::Vector2f &aPosition)
 
 void SkeletonWarrior::Render(sf::RenderWindow & aWindow)
 {
+	mySprite.Flip((myDirection.x < (int)mySprite.GetSprite().getPosition().x) ? FlipSides::LEFT : FlipSides::RIGHT);
 	mySprite.Render(aWindow);
-}
-
-bool SkeletonWarrior::WithinRecogDistance(sf::Vector2f aPlayerPos, sf::Vector2f aIsMyPos)
-{
-	if (((aIsMyPos.x - aPlayerPos.x) + (aIsMyPos.y - aPlayerPos.y)) >= myRecogDistance) 
-	{
-		return true;
-	}
-	return false;
 }

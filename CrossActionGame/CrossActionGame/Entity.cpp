@@ -15,7 +15,7 @@ void Entity::LoadContent(TextureContainer &aTxtrContainer)
 
 void Entity::Update(float & aDeltaTime)
 {
-	if (myAnimateFlag) 
+	if (myAnimateFlag)
 	{
 		mySprite.UpdateAnimation(aDeltaTime, myPosition, true);
 	}
@@ -73,4 +73,16 @@ SpriteAnim Entity::GetSprite()
 void Entity::SetAnimateFlag(bool aStatement)
 {
 	myAnimateFlag = aStatement;
+}
+
+void Entity::SetActionState(const float &anAnimationSpeed)
+{
+	mySprite.SetTexture(mySpriteSheets[myActionState]->myTexture);
+	mySprite.SetAnimation
+	(
+		mySpriteSheets[myActionState]->myRows,
+		mySpriteSheets[myActionState]->myColumns,
+		mySpriteSheets[myActionState]->myFrames,
+		anAnimationSpeed
+	);
 }

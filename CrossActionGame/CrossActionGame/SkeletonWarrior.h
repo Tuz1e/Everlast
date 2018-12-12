@@ -13,8 +13,8 @@ public:
 	void LoadContent(TextureContainer &aTxtrContainer) override;
 	void Update(float &aDeltaTime, sf::Vector2f &aPosition);
 	void Render(sf::RenderWindow &aWindow) override;
-
-	bool WithinRecogDistance(sf::Vector2f aPlayerPos, sf::Vector2f aIsMyPos);
+	bool myTargetAcquired;
+	sf::Vector2f myDirection;
 
 	float myRecogDistance; //Recognition Distance
 };

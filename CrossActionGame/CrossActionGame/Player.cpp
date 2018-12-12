@@ -27,8 +27,9 @@ void Player::LoadContent(TextureContainer &aTxtrContainer)
 {
 	SetSpriteSheet(PLAYER_IDLE, ActionState::IDLE, &aTxtrContainer);
 	SetSpriteSheet(PLAYER_WALK, ActionState::WALK, &aTxtrContainer);
+	SetSpriteSheet(PLAYER_ATTACK, ActionState::ATTACK, &aTxtrContainer);
 
-	SetActionState(7.0f);
+	SetActionState(4.5f);
 	mySprite.SetScale(3.0f, 3.0f);
 
 	printf("\nLoaded player content.");
@@ -54,29 +55,33 @@ void Player::Update(float & aDeltaTime)
 		myVelocity.x = mySpeed.x;
 	}
 
-	switch (myActionState) 
+	switch (myActionState)
 	{
-		case ActionState::IDLE:
-			if (myVelocity != sf::Vector2f(0, 0)) 
-			{
-				myActionState = ActionState::WALK;
-				SetActionState(9.0f);
-			}
-			break;
-		case ActionState::WALK:
-			myPosition += myVelocity * aDeltaTime;
-			mySprite.UpdateAnimation(aDeltaTime, myPosition, (myVelocity != sf::Vector2f(0, 0)) ? true : false);
+	case ActionState::IDLE:
+		if (myVelocity != sf::Vector2f(0, 0))
+		{
+			myActionState = ActionState::WALK;
+			SetActionState(11.0f);
+		}
+		Attacking();
+		break;
+	case ActionState::WALK:
+		myPosition += myVelocity * aDeltaTime;
 
-			if (myVelocity == sf::Vector2f(0, 0)) 
-			{
-				myActionState = ActionState::IDLE;
-				SetActionState(4.5f);
-			}
-			break;
+		if (myVelocity == sf::Vector2f(0, 0))
+		{
+			myActionState = ActionState::IDLE;
+			SetActionState(4.5f);
+		}
+		Attacking();
+		break;
+	case ActionState::ATTACK:
+		//myActionState == ActionState::IDLE;
+		//SetActionState(4.5f);
+		break;
 	}
 
 	mySprite.UpdateAnimation(aDeltaTime, myPosition, true);
-
 }
 
 void Player::Render(sf::RenderWindow & aWindow)
@@ -85,14 +90,11 @@ void Player::Render(sf::RenderWindow & aWindow)
 	mySprite.Render(aWindow);
 }
 
-void Player::SetActionState(const float &anAnimationSpeed)
+void Player::Attacking()
 {
-	mySprite.SetTexture(mySpriteSheets[myActionState]->myTexture);
-	mySprite.SetAnimation
-	(
-		mySpriteSheets[myActionState]->myRows,
-		mySpriteSheets[myActionState]->myColumns,
-		mySpriteSheets[myActionState]->myFrames,
-		anAnimationSpeed
-	);
+	if (sf::Mouse::isButtonPressed(sf::Mouse::Left))
+	{
+		myActionState = ActionState::ATTACK;
+		SetActionState(6.0f);
+	}
 }

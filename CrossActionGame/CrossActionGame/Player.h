@@ -13,7 +13,7 @@ public:
 	void Update(float &aDeltaTime) override;
 	void Render(sf::RenderWindow &aWindow) override;
 
-	void SetActionState(const float &anAnimationSpeed);
+	void Attacking();
 
 	int myIdleCounter;
 };

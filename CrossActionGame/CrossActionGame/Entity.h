@@ -4,7 +4,7 @@
 #include "SpriteAnim.h"
 #include "TextureContainer.h"
 
-enum ActionState 
+enum ActionState
 {
 	IDLE,
 	WALK,
@@ -18,7 +18,6 @@ public:
 	Entity();
 	~Entity();
 
-
 	virtual void LoadContent(TextureContainer &aTxtrContainer);
 	virtual void Update(float &aDeltaTime);
 	virtual void Render(sf::RenderWindow &aWindow);
@@ -31,6 +30,7 @@ public:
 	virtual void UpdateAnimation(float & aDeltaTime, sf::Vector2f &aPosition, bool aAnimateFlag);
 	virtual SpriteAnim GetSprite();
 	virtual void SetAnimateFlag(bool aStatement);
+	virtual void SetActionState(const float &anAnimationSpeed);
 
 protected:
 	sf::Vector2f
