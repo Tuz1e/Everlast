@@ -9,6 +9,10 @@ Entity::~Entity()
 {
 }
 
+void Entity::Initialize()
+{
+}
+
 void Entity::LoadContent(TextureContainer &aTxtrContainer)
 {
 }

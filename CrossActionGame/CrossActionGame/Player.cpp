@@ -6,11 +6,6 @@
 
 Player::Player()
 {
-	myIdleCounter = 0;
-	myHealth = 150;
-	mySpeed = sf::Vector2f(2.5f, 2.5f);
-	myPosition = sf::Vector2f(100.0f, 100.0f);
-	myActionState = ActionState::IDLE;
 }
 
 Player::~Player()
@@ -21,6 +16,16 @@ Player::~Player()
 		PtrDelete(txtrptr->myTexture);
 		PtrDelete(txtrptr);
 	}
+}
+
+void Player::Initialize()
+{
+	myIdleCounter = 0;
+	myHealth = 150;
+	mySpeed = sf::Vector2f(2.5f, 2.5f);
+	myPosition = sf::Vector2f(100.0f, 100.0f);
+	myActionState = ActionState::IDLE;
+	myPressFlag = false;
 }
 
 void Player::LoadContent(TextureContainer &aTxtrContainer)
@@ -63,7 +68,7 @@ void Player::Update(float & aDeltaTime)
 			myActionState = ActionState::WALK;
 			SetActionState(11.0f);
 		}
-		Attacking();
+		Attacking(aDeltaTime);
 		break;
 	case ActionState::WALK:
 		myPosition += myVelocity * aDeltaTime;
@@ -73,11 +78,17 @@ void Player::Update(float & aDeltaTime)
 			myActionState = ActionState::IDLE;
 			SetActionState(4.5f);
 		}
-		Attacking();
+		Attacking(aDeltaTime);
 		break;
 	case ActionState::ATTACK:
-		//myActionState == ActionState::IDLE;
-		//SetActionState(4.5f);
+		if (myAttackAnimationLength <= 0) 
+		{
+			std::cout << "\n\n" << "ATTACK" << std::endl;
+			myActionState = ActionState::IDLE;
+			SetActionState(4.5f);
+			myAttackAnimationLength = 0;
+		}
+		myAttackAnimationLength--;
 		break;
 	}
 
@@ -90,11 +101,22 @@ void Player::Render(sf::RenderWindow & aWindow)
 	mySprite.Render(aWindow);
 }
 
-void Player::Attacking()
+void Player::Attacking(float &aDeltaTime)
 {
 	if (sf::Mouse::isButtonPressed(sf::Mouse::Left))
 	{
-		myActionState = ActionState::ATTACK;
-		SetActionState(6.0f);
+		if (!myPressFlag) 
+		{
+			myPressFlag = true;
+			myActionState = ActionState::ATTACK;
+			SetActionState(6.5f);
+
+			//Literally no idea why adding 1.25f works, but it works, sooo... just gonna leave it there
+			myAttackAnimationLength = mySpriteSheets[ATTACK]->myColumns * 6.5f * aDeltaTime * 1.25f;
+		}
+	}
+	else 
+	{
+		myPressFlag = false;
 	}
 }

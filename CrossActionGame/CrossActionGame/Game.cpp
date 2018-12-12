@@ -13,6 +13,8 @@ Game::~Game()
 
 void Game::Initialize()
 {
+	myPlayer.Initialize();
+	mySkW.Initialize();
 	printf("\nInitialized Game.");
 }
 
@@ -33,8 +35,8 @@ void Game::Update(float &aDeltaTime)
 
 void Game::Render(sf::RenderWindow &aWindow)
 {
-	myPlayer.Render(aWindow);
 	mySkW.Render(aWindow);
+	myPlayer.Render(aWindow);
 }
 
 void Game::LateRender(sf::RenderWindow & aWindow)

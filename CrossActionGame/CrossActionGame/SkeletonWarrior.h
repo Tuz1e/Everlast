@@ -9,7 +9,7 @@ public:
 	SkeletonWarrior();
 	~SkeletonWarrior();
 
-	void Initialize();
+	void Initialize() override;
 	void LoadContent(TextureContainer &aTxtrContainer) override;
 	void Update(float &aDeltaTime, sf::Vector2f &aPosition);
 	void Render(sf::RenderWindow &aWindow) override;
@@ -17,6 +17,7 @@ public:
 	sf::Vector2f myDirection;
 
 	float myRecogDistance; //Recognition Distance
+	float myHitDistance;
 };
 
 #endif
