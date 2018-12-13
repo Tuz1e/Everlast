@@ -1,25 +1,33 @@
 #include "pch.h"
 #include "PostNord.h"
+#include <iostream>
 
-PostNord::PostNord()
-{
-}
+//CU::GrowingArray< CU::GrowingArray<Subscriber*>> PostMaster::mySubscribers;
+
+std::vector<std::vector<Subscriber*>> PostNord::mySubscribers;
 
 PostNord::~PostNord()
 {
 }
 
-std::vector<Subscriber*> PostNord::mySubscribers;
-
-void PostNord::Message(const MessageType & aMessage)
+void PostNord::Initialize()
 {
-	for (size_t i = 0; i < mySubscribers.size(); i++)
+	for (size_t i = 0; i < MessageCount; i++)
 	{
-		mySubscribers[i - 1]->ReceiveMessage(aMessage);
+		std::vector<Subscriber*> tempSub;
+		mySubscribers.push_back(tempSub);
 	}
 }
 
-void PostNord::Subscribe(Subscriber *aSubscriber)
+void PostNord::Message(const MessageType & aMessage)
 {
-	mySubscribers.push_back(aSubscriber);
+	for (int i = 0; i < mySubscribers.size(); i++)
+	{
+		mySubscribers[aMessage][i]->ReceiveMessage(aMessage);
+	}
+}
+
+void PostNord::Subscribe(Subscriber *aSubscriber, const MessageType &aMessage)
+{
+	mySubscribers[aMessage].push_back(aSubscriber);
 }

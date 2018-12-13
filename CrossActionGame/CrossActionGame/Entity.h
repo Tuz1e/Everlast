@@ -32,6 +32,7 @@ public:
 	virtual SpriteAnim GetSprite();
 	virtual void SetAnimateFlag(bool aStatement);
 	virtual void SetActionState(const float &anAnimationSpeed);
+	virtual void HealthModifier(int &someHealth);
 
 protected:
 	sf::Vector2f

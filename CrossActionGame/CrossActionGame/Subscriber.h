@@ -3,7 +3,9 @@
 
 enum MessageType
 {
-	PlayerLocation,
+	PlayerHit,
+	EnemyHit,
+
 	MessageCount
 };
 
@@ -11,12 +13,11 @@ class Subscriber
 {
 public:
 	Subscriber();
-	virtual ~Subscriber();
+	~Subscriber();
 
 	void SendMessage(const MessageType &aMessage);
 	virtual void ReceiveMessage(const MessageType &aMessage) = 0;
-
-protected:
+	//TODO: Add MessageType
 };
 
 #endif

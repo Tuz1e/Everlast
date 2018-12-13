@@ -90,3 +90,8 @@ void Entity::SetActionState(const float &anAnimationSpeed)
 		anAnimationSpeed
 	);
 }
+
+void Entity::HealthModifier(int & someHealth)
+{
+	myHealth += someHealth;
+}

@@ -54,13 +54,13 @@
     <ClInclude Include="SkeletonWarrior.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Subscriber.h">
+    <ClInclude Include="Input.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="PostNord.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Input.h">
+    <ClInclude Include="Subscriber.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
@@ -95,13 +95,13 @@
     <ClCompile Include="SkeletonWarrior.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Subscriber.cpp">
+    <ClCompile Include="Input.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="PostNord.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Input.cpp">
+    <ClCompile Include="Subscriber.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>

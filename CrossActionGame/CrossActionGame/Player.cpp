@@ -81,7 +81,7 @@ void Player::Update(float & aDeltaTime)
 		Attacking(aDeltaTime);
 		break;
 	case ActionState::ATTACK:
-		if (myAttackAnimationLength <= 0) 
+		if (myAttackAnimationLength <= 0)
 		{
 			std::cout << "\n\n" << "ATTACK" << std::endl;
 			myActionState = ActionState::IDLE;
@@ -105,7 +105,7 @@ void Player::Attacking(float &aDeltaTime)
 {
 	if (sf::Mouse::isButtonPressed(sf::Mouse::Left))
 	{
-		if (!myPressFlag) 
+		if (!myPressFlag)
 		{
 			myPressFlag = true;
 			myActionState = ActionState::ATTACK;
@@ -115,7 +115,7 @@ void Player::Attacking(float &aDeltaTime)
 			myAttackAnimationLength = mySpriteSheets[ATTACK]->myColumns * 6.5f * aDeltaTime * 1.25f;
 		}
 	}
-	else 
+	else
 	{
 		myPressFlag = false;
 	}
