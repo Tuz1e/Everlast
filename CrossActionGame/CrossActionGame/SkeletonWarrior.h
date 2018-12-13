@@ -2,8 +2,9 @@
 #define SKELETONWARRIOR_H
 
 #include "Entity.h"
+#include "Subscriber.h"
 
-class SkeletonWarrior : public Entity
+class SkeletonWarrior : public Entity, public Subscriber
 {
 public:
 	SkeletonWarrior();
@@ -15,6 +16,8 @@ public:
 	void Render(sf::RenderWindow &aWindow) override;
 	bool myTargetAcquired;
 	sf::Vector2f myDirection;
+
+	void ReceiveMessage(const Memorandum &aMemorandum, const MessageType &aMessage) override;
 
 	float myRecogDistance; //Recognition Distance
 	float myHitDistance;

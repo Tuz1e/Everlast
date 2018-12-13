@@ -10,7 +10,7 @@ Subscriber::~Subscriber()
 {
 }
 
-void Subscriber::SendMessage(const MessageType &aMessage)
+void Subscriber::SendMessage(const Memorandum &aMemorandum, const MessageType &aMessage)
 {
-	PostNord::Message(aMessage);
+	PostNord::Message(aMemorandum, aMessage);
 }

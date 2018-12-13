@@ -14,11 +14,15 @@ public:
 	void Update(float &aDeltaTime) override;
 	void Render(sf::RenderWindow &aWindow) override;
 
+	
+
 	void Attacking(float &aDeltaTime);
 
 	int myIdleCounter;
 	int myAttackAnimationLength;
 	bool myPressFlag;
+
+	sf::FloatRect myBoundingBox;
 };
 
 #endif

@@ -14,16 +14,15 @@ void PostNord::Initialize()
 {
 	for (size_t i = 0; i < MessageCount; i++)
 	{
-		std::vector<Subscriber*> tempSub;
-		mySubscribers.push_back(tempSub);
+		mySubscribers.push_back(std::vector<Subscriber*>());
 	}
 }
 
-void PostNord::Message(const MessageType & aMessage)
+void PostNord::Message(const Memorandum &aMemorandum, const MessageType & aMessage)
 {
 	for (int i = 0; i < mySubscribers.size(); i++)
 	{
-		mySubscribers[aMessage][i]->ReceiveMessage(aMessage);
+		mySubscribers[aMessage][i]->ReceiveMessage(aMemorandum, aMessage);
 	}
 }
 

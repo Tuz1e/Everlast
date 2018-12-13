@@ -3,6 +3,7 @@
 
 #include "SpriteAnim.h"
 #include "TextureContainer.h"
+#include <iostream>
 
 enum ActionState
 {
@@ -34,6 +35,7 @@ public:
 	virtual void SetActionState(const float &anAnimationSpeed);
 	virtual void HealthModifier(int &someHealth);
 
+
 protected:
 	sf::Vector2f
 		mySpeed,
@@ -42,7 +44,7 @@ protected:
 	ActionState myActionState;
 	int myHealth;
 	std::vector<Textures*> mySpriteSheets;
-	SpriteAnim mySprite;
+	SpriteAnim mySprite;	
 	bool myAnimateFlag;
 };
 

@@ -3,6 +3,8 @@
 
 #include "Subscriber.h"
 
+class Memorandum;
+
 class PostNord
 {
 public:
@@ -10,7 +12,7 @@ public:
 
 	static void Initialize();
 
-	static void Message(const MessageType &aMessage);
+	static void Message(const Memorandum &aMemorandum, const MessageType &aMessage);
 	static void Subscribe(Subscriber *aSubscriber, const MessageType &aMessage);
 private:
 	PostNord() {};

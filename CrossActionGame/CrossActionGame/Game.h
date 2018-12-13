@@ -22,7 +22,7 @@ public:
 	void LateRender(sf::RenderWindow &aWindow);
 
 	WorldManager myWorldManager;
-	Player myPlayer;
+	Player *myPlayer;
 	SkeletonWarrior mySkW;
 	//Barrel myBarrel;
 };

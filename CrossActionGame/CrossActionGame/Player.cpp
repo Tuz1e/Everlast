@@ -33,9 +33,27 @@ void Player::LoadContent(TextureContainer &aTxtrContainer)
 	SetSpriteSheet(PLAYER_IDLE, ActionState::IDLE, &aTxtrContainer);
 	SetSpriteSheet(PLAYER_WALK, ActionState::WALK, &aTxtrContainer);
 	SetSpriteSheet(PLAYER_ATTACK, ActionState::ATTACK, &aTxtrContainer);
-
 	SetActionState(4.5f);
 	mySprite.SetScale(3.0f, 3.0f);
+
+	myBoundingBox = mySprite.GetSprite().getGlobalBounds();
+
+	//myHitbox.setTextureRect(mySprite.GetSprite().getTextureRect());
+	//myHitbox.setSize
+	//(
+	//	sf::Vector2f
+	//	(
+	//		mySprite.GetTexture()->getSize().x/mySpriteSheets[myActionState]->myColumns, 
+	//		mySprite.GetTexture()->getSize().y
+	//	)
+	//);
+	//myHitbox.setOutlineColor(sf::Color::Magenta);
+	//myHitbox.setOutlineThickness(2.0f);
+	//myHitbox.setPosition
+	//(
+	//	myPosition.x - (mySprite.GetTexture()->getSize().x/2.0f),
+	//	myPosition.y - (mySprite.GetTexture()->getSize().y/2.0f)
+	//);
 
 	printf("\nLoaded player content.");
 }
@@ -92,12 +110,27 @@ void Player::Update(float & aDeltaTime)
 		break;
 	}
 
+	//myHitbox.setSize
+	//(
+	//	sf::Vector2f
+	//	(
+	//		mySprite.GetTexture()->getSize().x / mySpriteSheets[myActionState]->myColumns+5,
+	//		mySprite.GetTexture()->getSize().y
+	//	)
+	//);
+	//myHitbox.setPosition
+	//(
+	//	myPosition.x - (mySprite.GetTexture()->getSize().x / 2.0f / mySpriteSheets[myActionState]->myColumns+5),
+	//	myPosition.y - (mySprite.GetTexture()->getSize().y / 2.0f / mySpriteSheets[myActionState]->myRows)
+	//);
+
 	mySprite.UpdateAnimation(aDeltaTime, myPosition, true);
 }
 
 void Player::Render(sf::RenderWindow & aWindow)
 {
 	mySprite.Flip((sf::Mouse::getPosition(aWindow).x < (int)mySprite.GetSprite().getPosition().x) ? FlipSides::LEFT : FlipSides::RIGHT);
+	//aWindow.draw(myHitbox);
 	mySprite.Render(aWindow);
 }
 

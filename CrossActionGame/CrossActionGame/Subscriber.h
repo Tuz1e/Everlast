@@ -1,6 +1,8 @@
 #ifndef SUBSCRIBER_H
 #define SUBSCRIBER_H
 
+#include "Memorandum.h"
+
 enum MessageType
 {
 	PlayerHit,
@@ -15,8 +17,8 @@ public:
 	Subscriber();
 	~Subscriber();
 
-	void SendMessage(const MessageType &aMessage);
-	virtual void ReceiveMessage(const MessageType &aMessage) = 0;
+	void SendMessage(const Memorandum &aMemorandum, const MessageType &aMessage);
+	virtual void ReceiveMessage(const Memorandum &aMemorandum, const MessageType &aMessage) = 0;
 	//TODO: Add MessageType
 };
 

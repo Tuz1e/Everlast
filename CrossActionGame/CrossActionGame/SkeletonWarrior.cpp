@@ -20,6 +20,7 @@ void SkeletonWarrior::Initialize()
 	myHitDistance = 50.0f;
 	myActionState = ActionState::IDLE;
 	myTargetAcquired = false;
+	PostNord::Subscribe(this, MessageType::PlayerHit);
 }
 
 void SkeletonWarrior::LoadContent(TextureContainer & aTxtrContainer)
@@ -80,4 +81,8 @@ void SkeletonWarrior::Render(sf::RenderWindow & aWindow)
 {
 	mySprite.Flip((myDirection.x < (int)mySprite.GetSprite().getPosition().x) ? FlipSides::LEFT : FlipSides::RIGHT);
 	mySprite.Render(aWindow);
+}
+
+void SkeletonWarrior::ReceiveMessage(const Memorandum &aMemorandum, const MessageType & aMessage)
+{
 }
