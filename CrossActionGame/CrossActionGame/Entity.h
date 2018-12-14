@@ -46,6 +46,7 @@ protected:
 	std::vector<Textures*> mySpriteSheets;
 	SpriteAnim mySprite;	
 	bool myAnimateFlag;
+	sf::FloatRect myBoundingBox;
 };
 
 #endif

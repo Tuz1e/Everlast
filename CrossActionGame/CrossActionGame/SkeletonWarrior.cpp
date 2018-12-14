@@ -83,6 +83,15 @@ void SkeletonWarrior::Render(sf::RenderWindow & aWindow)
 	mySprite.Render(aWindow);
 }
 
-void SkeletonWarrior::ReceiveMessage(const Memorandum &aMemorandum, const MessageType & aMessage)
+void SkeletonWarrior::ReceiveMessage(Memorandum &aMemorandum, const MessageType & aMessage)
 {
+	if (aMessage == PlayerHit) 
+	{
+		std::cout << "Received Message, Collision Pending" << std::endl;
+		if (myBoundingBox.intersects(aMemorandum.GetBoundingBox()))
+		{
+			std::cout << "Collision Successful" << std::endl;
+		}
+	}
+	std::cout << "Collision Finished" std::endl;
 }

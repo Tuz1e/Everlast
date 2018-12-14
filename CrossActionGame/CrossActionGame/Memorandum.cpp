@@ -29,3 +29,13 @@ sf::Vector2f Memorandum::GetVector()
 {
 	return myVector;
 }
+
+void Memorandum::SetInteger(const int & anInteger)
+{
+	myInteger = anInteger;
+}
+
+int Memorandum::GetInteger()
+{
+	return myInteger;
+}

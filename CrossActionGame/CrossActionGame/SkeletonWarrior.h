@@ -17,7 +17,7 @@ public:
 	bool myTargetAcquired;
 	sf::Vector2f myDirection;
 
-	void ReceiveMessage(const Memorandum &aMemorandum, const MessageType &aMessage) override;
+	void ReceiveMessage(Memorandum &aMemorandum, const MessageType &aMessage) override;
 
 	float myRecogDistance; //Recognition Distance
 	float myHitDistance;

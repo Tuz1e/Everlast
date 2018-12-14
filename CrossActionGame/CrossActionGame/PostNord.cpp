@@ -18,9 +18,9 @@ void PostNord::Initialize()
 	}
 }
 
-void PostNord::Message(const Memorandum &aMemorandum, const MessageType & aMessage)
+void PostNord::Message(Memorandum &aMemorandum, const MessageType & aMessage)
 {
-	for (int i = 0; i < mySubscribers.size(); i++)
+	for (int i = 0; i < mySubscribers[aMessage].size(); i++)
 	{
 		mySubscribers[aMessage][i]->ReceiveMessage(aMemorandum, aMessage);
 	}

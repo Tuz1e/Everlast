@@ -17,8 +17,8 @@ public:
 	Subscriber();
 	~Subscriber();
 
-	void SendMessage(const Memorandum &aMemorandum, const MessageType &aMessage);
-	virtual void ReceiveMessage(const Memorandum &aMemorandum, const MessageType &aMessage) = 0;
+	void SendMessage(Memorandum &aMemorandum, const MessageType &aMessage);
+	virtual void ReceiveMessage(Memorandum &aMemorandum, const MessageType &aMessage) = 0;
 	//TODO: Add MessageType
 };
 
