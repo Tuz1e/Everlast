@@ -1,10 +1,9 @@
 #ifndef SKELETONWARRIOR_H
 #define SKELETONWARRIOR_H
 
-#include "Entity.h"
-#include "Subscriber.h"
+#include "Enemy.h"
 
-class SkeletonWarrior : public Entity, public Subscriber
+class SkeletonWarrior : public Enemy
 {
 public:
 	SkeletonWarrior();
@@ -12,15 +11,9 @@ public:
 
 	void Initialize() override;
 	void LoadContent(TextureContainer &aTxtrContainer) override;
-	void Update(float &aDeltaTime, sf::Vector2f &aPosition);
+	void Update(float &aDeltaTime, sf::Vector2f &aPosition) override;
 	void Render(sf::RenderWindow &aWindow) override;
-	bool myTargetAcquired;
-	sf::Vector2f myDirection;
 
-	void ReceiveMessage(Memorandum &aMemorandum, const MessageType &aMessage) override;
-
-	float myRecogDistance; //Recognition Distance
-	float myHitDistance;
 };
 
 #endif

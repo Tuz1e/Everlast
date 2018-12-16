@@ -7,8 +7,8 @@ public:
 	Memorandum();
 	~Memorandum();
 
-	void SetBoundingBox(sf::FloatRect aBoundingBox);
-	sf::FloatRect GetBoundingBox();
+	void SetBoundingBox(sf::RectangleShape aBoundingBox);
+	sf::RectangleShape GetBoundingBox();
 
 	void SetVector(sf::Vector2f aVector);
 	sf::Vector2f GetVector();
@@ -17,7 +17,7 @@ public:
 	int GetInteger();
 
 private:
-	sf::FloatRect myBoundingBox;
+	sf::RectangleShape myBoundingBox;
 	sf::Vector2f myVector;
 	int myInteger;
 };

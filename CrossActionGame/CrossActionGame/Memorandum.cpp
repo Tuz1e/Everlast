@@ -11,11 +11,11 @@ Memorandum::~Memorandum()
 {
 }
 
-void Memorandum::SetBoundingBox(sf::FloatRect aBoundingBox)
+void Memorandum::SetBoundingBox(sf::RectangleShape aBoundingBox)
 {
 }
 
-sf::FloatRect Memorandum::GetBoundingBox()
+sf::RectangleShape Memorandum::GetBoundingBox()
 {
 	return myBoundingBox;
 }

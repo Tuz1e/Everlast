@@ -1,6 +1,5 @@
 #include "pch.h"
 #include "SkeletonWarrior.h"
-#include "PostNord.h"
 #include <cmath>
 
 SkeletonWarrior::SkeletonWarrior()
@@ -15,12 +14,14 @@ void SkeletonWarrior::Initialize()
 {
 	myHealth = 75;
 	mySpeed = sf::Vector2f(2.0f, 2.0f);
-	myPosition = sf::Vector2f(500.0f, 500.0f);
+	myPosition = sf::Vector2f(800.0f, 550.0f);
 	myRecogDistance = 500.0f;
 	myHitDistance = 50.0f;
 	myActionState = ActionState::IDLE;
 	myTargetAcquired = false;
-	PostNord::Subscribe(this, MessageType::PlayerHit);
+	myAttackingFlag = false;
+	myDamage = 2;
+	myWeaponRange = 80.0f;
 }
 
 void SkeletonWarrior::LoadContent(TextureContainer & aTxtrContainer)
@@ -29,8 +30,44 @@ void SkeletonWarrior::LoadContent(TextureContainer & aTxtrContainer)
 	SetSpriteSheet(SKELETON_WALK, WALK, &aTxtrContainer); //Sets the walking animation
 	SetSpriteSheet(SKELETON_ATTACK, ATTACK, &aTxtrContainer); //Sets the attack animation
 
+	mySprite.Flip(RIGHT);
+
 	SetActionState(4.5f);
 	mySprite.SetScale(3.0f, 3.0f);
+
+	myHitbox.setSize
+	(
+		sf::Vector2f
+		(
+			mySprite.GetTexture()->getSize().x / mySpriteSheets[myActionState]->myColumns + 25,
+			mySprite.GetTexture()->getSize().y / mySpriteSheets[myActionState]->myRows + 25
+		)
+	);
+	myHitbox.setTextureRect
+	(
+		sf::IntRect
+		(
+			mySprite.GetSprite().getGlobalBounds().left,
+			mySprite.GetSprite().getGlobalBounds().top,
+			mySprite.GetSprite().getGlobalBounds().width,
+			mySprite.GetSprite().getGlobalBounds().height / mySpriteSheets[myActionState]->myRows
+		)
+	);
+	myHitbox.setOutlineColor(sf::Color::Magenta);
+	myHitbox.setOutlineThickness(2.0f);
+	myHitbox.setPosition(myPosition);
+	myHitbox.setOrigin(
+		mySprite.GetTexture()->getSize().x / mySpriteSheets[myActionState]->myColumns,
+		mySprite.GetTexture()->getSize().y / mySpriteSheets[myActionState]->myRows / 3.0f - 5.0f);
+
+	myWeaponBB.setSize(sf::Vector2f(35, 70));
+	myWeaponBB.setTextureRect(sf::IntRect(100, 100, 100, 100));
+	myWeaponBB.setOutlineColor(sf::Color::Cyan);
+	myWeaponBB.setOutlineThickness(2.0f);
+	myWeaponBB.setPosition(sf::Vector2f(myPosition.x + myWeaponRange * ((mySprite.GetFlip() == FlipSides::RIGHT) ? 1 : -0.5), myPosition.y));
+	myWeaponBB.setOrigin(
+		mySprite.GetTexture()->getSize().x / mySpriteSheets[myActionState]->myColumns,
+		mySprite.GetTexture()->getSize().y / mySpriteSheets[myActionState]->myRows / 3.0f - 5.0f);
 }
 
 void SkeletonWarrior::Update(float & aDeltaTime, sf::Vector2f &aPosition)
@@ -38,6 +75,8 @@ void SkeletonWarrior::Update(float & aDeltaTime, sf::Vector2f &aPosition)
 	myVelocity.x = aPosition.x - myPosition.x;
 	myVelocity.y = aPosition.y - myPosition.y;
 	float tempHypo = sqrt((myVelocity.x * myVelocity.x) + (myVelocity.y * myVelocity.y)); //Gets the hypotenuse
+	myHitbox.setPosition(myPosition);
+	myWeaponBB.setPosition(sf::Vector2f(myPosition.x + myWeaponRange * ((mySprite.GetFlip() == FlipSides::RIGHT) ? 1 : -0.5), myPosition.y));
 
 	switch (myActionState)
 	{
@@ -56,6 +95,7 @@ void SkeletonWarrior::Update(float & aDeltaTime, sf::Vector2f &aPosition)
 			{
 				myActionState = ActionState::ATTACK;
 				SetActionState(5.5f);
+				myAttackingFlag = true;
 			}
 			else
 			{
@@ -66,10 +106,12 @@ void SkeletonWarrior::Update(float & aDeltaTime, sf::Vector2f &aPosition)
 		}
 		break;
 	case ATTACK:
+		myAttackingFlag = false;
 		if (tempHypo > myHitDistance) 
 		{
 			myActionState = ActionState::WALK;
 			SetActionState(11.0f);
+			myAttackingFlag = false;
 		}
 		break;
 	}
@@ -80,18 +122,7 @@ void SkeletonWarrior::Update(float & aDeltaTime, sf::Vector2f &aPosition)
 void SkeletonWarrior::Render(sf::RenderWindow & aWindow)
 {
 	mySprite.Flip((myDirection.x < (int)mySprite.GetSprite().getPosition().x) ? FlipSides::LEFT : FlipSides::RIGHT);
+	aWindow.draw(myHitbox);
+	aWindow.draw(myWeaponBB);
 	mySprite.Render(aWindow);
-}
-
-void SkeletonWarrior::ReceiveMessage(Memorandum &aMemorandum, const MessageType & aMessage)
-{
-	if (aMessage == PlayerHit) 
-	{
-		std::cout << "Received Message, Collision Pending" << std::endl;
-		if (myBoundingBox.intersects(aMemorandum.GetBoundingBox()))
-		{
-			std::cout << "Collision Successful" << std::endl;
-		}
-	}
-	std::cout << "Collision Finished" std::endl;
 }

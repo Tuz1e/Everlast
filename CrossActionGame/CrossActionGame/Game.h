@@ -7,7 +7,8 @@
 
 #include "Player.h"
 #include "WorldManager.h"
-#include "SkeletonWarrior.h"
+#include "EnemyManager.h"
+#include "CollisionManager.h"
 
 class Game
 {
@@ -21,10 +22,10 @@ public:
 	void Render(sf::RenderWindow &aWindow);
 	void LateRender(sf::RenderWindow &aWindow);
 
-	WorldManager myWorldManager;
+	WorldManager myWM;
 	Player *myPlayer;
-	SkeletonWarrior mySkW;
-	//Barrel myBarrel;
+	EnemyManager myEM;
+	CollisionManager myCM;
 };
 
 #endif

@@ -15,6 +15,7 @@ public:
 
 	void SetTexture(sf::Texture *aTexture);
 	void Flip(FlipSides aSide);
+	FlipSides GetFlip();
 	void SetSprite(sf::Sprite aSprite);
 	void SetFrame(int *anIndex);
 	void SetPosition(float aX, float aY);
@@ -39,6 +40,7 @@ private:
 	float
 		myCurrentFrame,
 		myFramerate;
+	FlipSides myFlip;
 };
 
 #endif

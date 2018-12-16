@@ -19,7 +19,7 @@ void Game::Initialize()
 
 	myPlayer = new Player();
 	myPlayer->Initialize();
-	mySkW.Initialize();
+	myEM.Initialize();
 	printf("\nInitialized Game.");
 }
 
@@ -28,19 +28,21 @@ void Game::LoadContent(sf::RenderWindow &aWindow)
 	TextureContainer tempTextureCon;
 
 	myPlayer->LoadContent(tempTextureCon);
-	mySkW.LoadContent(tempTextureCon);
+	myEM.LoadContent(tempTextureCon);
 	printf("\nLoaded Content.");
 }
 
 void Game::Update(float &aDeltaTime)
 {
 	myPlayer->Update(aDeltaTime);
-	mySkW.Update(aDeltaTime, myPlayer->GetPosition());
+	myEM.Update(aDeltaTime, myPlayer->GetPosition());
+
+	myCM.Update(myPlayer, myEM);
 }
 
 void Game::Render(sf::RenderWindow &aWindow)
 {
-	mySkW.Render(aWindow);
+	myEM.Render(aWindow);
 	myPlayer->Render(aWindow);
 }
 

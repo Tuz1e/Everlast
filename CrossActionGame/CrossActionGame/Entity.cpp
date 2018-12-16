@@ -91,7 +91,33 @@ void Entity::SetActionState(const float &anAnimationSpeed)
 	);
 }
 
-void Entity::HealthModifier(int & someHealth)
+void Entity::HealthModifier(const int & someHealth)
 {
 	myHealth += someHealth;
+	printf("Health Left: %i", myHealth);
+}
+
+sf::RectangleShape Entity::GetWeaponBB()
+{
+	return myWeaponBB;
+}
+
+bool Entity::GetAttackingFlag()
+{
+	return myAttackingFlag;
+}
+
+int Entity::GetDamage()
+{
+	return (myDamage > 0) ? myDamage : 0;
+}
+
+int Entity::GetHealth()
+{
+	return myHealth;
+}
+
+sf::RectangleShape Entity::GetHitbox()
+{
+	return myHitbox;
 }

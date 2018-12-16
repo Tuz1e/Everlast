@@ -12,7 +12,7 @@ public:
 
 	static void Initialize();
 
-	static void Message(Memorandum &aMemorandum, const MessageType &aMessage);
+	static void Message(Memorandum *aMemorandum, const MessageType &aMessage);
 	static void Subscribe(Subscriber *aSubscriber, const MessageType &aMessage);
 private:
 	PostNord() {};

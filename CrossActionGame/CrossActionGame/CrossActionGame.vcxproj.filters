@@ -13,17 +13,47 @@
       <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
       <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
     </Filter>
-    <Filter Include="Header Files\Enemies">
-      <UniqueIdentifier>{3e44f0b3-5b9d-43d0-9a70-c37ebbdf144e}</UniqueIdentifier>
+    <Filter Include="Source Files\Filters">
+      <UniqueIdentifier>{9f145623-8e65-4ef1-8125-9d8721de7219}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Source Files\Enemies">
+    <Filter Include="Source Files\Filters\Enemies">
       <UniqueIdentifier>{cf6c4a3f-6d2a-4c45-a20c-c66666c0ee24}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Header Files\Object">
+    <Filter Include="Source Files\Filters\Object Definitions">
+      <UniqueIdentifier>{2852c72e-3cfb-4a68-8174-298123fd3761}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Filters\Texture Managing">
+      <UniqueIdentifier>{3a112f8a-8ea0-4181-948c-9ebb9fe485e0}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Filters\Post">
+      <UniqueIdentifier>{8d375df8-8868-41b4-ac5c-539e1a5f4611}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Filters">
+      <UniqueIdentifier>{8b6cb0f3-9b4a-439d-a8b9-7bbaa957e7a7}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Filters\Managers">
+      <UniqueIdentifier>{954145e4-7c39-44ea-8572-84eb103a639e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Filters\Enemies">
+      <UniqueIdentifier>{3e44f0b3-5b9d-43d0-9a70-c37ebbdf144e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Filters\Object Definitions">
+      <UniqueIdentifier>{940df98d-c1bc-481c-9315-20a961d6a56e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Filters\Texture Managing">
+      <UniqueIdentifier>{9dd86b6e-5dcb-4325-a1ae-ca3849698605}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Filters\Post">
+      <UniqueIdentifier>{359bb39c-9e3e-4e3b-94ce-459c328f68e1}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Filters\Objects">
       <UniqueIdentifier>{a61ca0f0-9763-48dd-9adc-c25afb449c74}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Source Files\Object">
+    <Filter Include="Source Files\Filters\Objects">
       <UniqueIdentifier>{5354c16c-f4b0-4c15-b620-f10ccdebde10}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Filters\Managers">
+      <UniqueIdentifier>{8fc41558-f26d-4550-a68c-c5f9bd6b8077}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -33,38 +63,41 @@
     <ClInclude Include="Game.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Entity.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="Player.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="TextureContainer.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="SpriteAnim.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="WorldManager.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="EnemyManager.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="SkeletonWarrior.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="Input.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="PostNord.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="Subscriber.h">
-      <Filter>Header Files</Filter>
+      <Filter>Header Files\Filters\Enemies</Filter>
     </ClInclude>
     <ClInclude Include="Memorandum.h">
-      <Filter>Header Files</Filter>
+      <Filter>Header Files\Filters\Post</Filter>
+    </ClInclude>
+    <ClInclude Include="Subscriber.h">
+      <Filter>Header Files\Filters\Post</Filter>
+    </ClInclude>
+    <ClInclude Include="PostNord.h">
+      <Filter>Header Files\Filters\Post</Filter>
+    </ClInclude>
+    <ClInclude Include="SpriteAnim.h">
+      <Filter>Header Files\Filters\Texture Managing</Filter>
+    </ClInclude>
+    <ClInclude Include="TextureContainer.h">
+      <Filter>Header Files\Filters\Texture Managing</Filter>
+    </ClInclude>
+    <ClInclude Include="EnemyManager.h">
+      <Filter>Header Files\Filters\Managers</Filter>
+    </ClInclude>
+    <ClInclude Include="Entity.h">
+      <Filter>Header Files\Filters\Object Definitions</Filter>
+    </ClInclude>
+    <ClInclude Include="WorldManager.h">
+      <Filter>Header Files\Filters\Managers</Filter>
+    </ClInclude>
+    <ClInclude Include="Enemy.h">
+      <Filter>Header Files\Filters\Object Definitions</Filter>
+    </ClInclude>
+    <ClInclude Include="CollisionManager.h">
+      <Filter>Header Files\Filters\Managers</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -77,38 +110,41 @@
     <ClCompile Include="Game.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Entity.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="Player.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="TextureContainer.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="SpriteAnim.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="WorldManager.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="EnemyManager.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="SkeletonWarrior.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="Input.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="PostNord.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="Subscriber.cpp">
-      <Filter>Source Files</Filter>
+      <Filter>Source Files\Filters\Enemies</Filter>
     </ClCompile>
     <ClCompile Include="Memorandum.cpp">
-      <Filter>Source Files</Filter>
+      <Filter>Source Files\Filters\Post</Filter>
+    </ClCompile>
+    <ClCompile Include="PostNord.cpp">
+      <Filter>Source Files\Filters\Post</Filter>
+    </ClCompile>
+    <ClCompile Include="Subscriber.cpp">
+      <Filter>Source Files\Filters\Post</Filter>
+    </ClCompile>
+    <ClCompile Include="SpriteAnim.cpp">
+      <Filter>Source Files\Filters\Texture Managing</Filter>
+    </ClCompile>
+    <ClCompile Include="TextureContainer.cpp">
+      <Filter>Source Files\Filters\Texture Managing</Filter>
+    </ClCompile>
+    <ClCompile Include="Entity.cpp">
+      <Filter>Source Files\Filters\Object Definitions</Filter>
+    </ClCompile>
+    <ClCompile Include="EnemyManager.cpp">
+      <Filter>Source Files\Filters\Managers</Filter>
+    </ClCompile>
+    <ClCompile Include="WorldManager.cpp">
+      <Filter>Source Files\Filters\Managers</Filter>
+    </ClCompile>
+    <ClCompile Include="Enemy.cpp">
+      <Filter>Source Files\Filters\Object Definitions</Filter>
+    </ClCompile>
+    <ClCompile Include="CollisionManager.cpp">
+      <Filter>Source Files\Filters\Managers</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

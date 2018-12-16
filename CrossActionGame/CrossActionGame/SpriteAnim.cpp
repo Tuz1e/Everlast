@@ -33,6 +33,7 @@ sf::Sprite& SpriteAnim::GetSprite()
 
 void SpriteAnim::Flip(FlipSides aSide)
 {
+	myFlip = aSide;
 	if (aSide == FlipSides::LEFT)
 	{
 		mySprite.setScale(-myScale.x, myScale.y);
@@ -41,6 +42,11 @@ void SpriteAnim::Flip(FlipSides aSide)
 	{
 		mySprite.setScale(myScale.x, myScale.y);
 	}
+}
+
+FlipSides SpriteAnim::GetFlip()
+{
+	return myFlip;
 }
 
 void SpriteAnim::SetSprite(sf::Sprite aSprite)

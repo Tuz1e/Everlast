@@ -33,7 +33,12 @@ public:
 	virtual SpriteAnim GetSprite();
 	virtual void SetAnimateFlag(bool aStatement);
 	virtual void SetActionState(const float &anAnimationSpeed);
-	virtual void HealthModifier(int &someHealth);
+	virtual void HealthModifier(const int &someHealth);
+	virtual sf::RectangleShape GetWeaponBB();
+	virtual bool GetAttackingFlag();
+	virtual int GetDamage();
+	virtual int GetHealth();
+	virtual sf::RectangleShape GetHitbox();
 
 
 protected:
@@ -42,11 +47,17 @@ protected:
 		myVelocity,
 		myPosition;
 	ActionState myActionState;
-	int myHealth;
+	int
+		myHealth,
+		myDamage;
+	float myWeaponRange;
 	std::vector<Textures*> mySpriteSheets;
 	SpriteAnim mySprite;	
 	bool myAnimateFlag;
-	sf::FloatRect myBoundingBox;
+	sf::RectangleShape 
+		myWeaponBB,
+		myHitbox;
+	bool myAttackingFlag;
 };
 
 #endif
