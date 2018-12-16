@@ -27,7 +27,6 @@ public:
 	std::string LoadFromXml(const std::string &aPath, const std::string &aFindLine);
 
 	std::string myTileIdsString;
-	std::vector<int> myTileIds;
 	std::vector<Tile*> myTiles;
 	std::string 
 		myTMapTxtrFile,
