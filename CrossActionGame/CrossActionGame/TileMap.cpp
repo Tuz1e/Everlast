@@ -16,10 +16,41 @@ void TileMap::LoadContent()
 	myTMapTxtrFile = LoadFromXml(myTMapTxtFile, "file");
 	myTMapSize = sf::Vector2i
 	(
-		static_cast<int>(LoadFromXml(myTMapTxtFile, "width")),
+		std::stoi(LoadFromXml(myTMapTxtFile, "width")),
+		std::stoi(LoadFromXml(myTMapTxtFile, "height"))
+	);
+	myTiles.resize(myTMapSize.x*myTMapSize.y);
 
-	)
+	myTileIdsString = LoadFromXml(myTMapTxtFile, "map");
+
+	std::istringstream tempISStream(myTileIdsString);
+	std::vector<int> tempIds{ std::istream_iterator<int>(tempISStream),
+					   std::istream_iterator<int>() };
+	std::copy(tempIds.begin(), tempIds.end(), std::ostream_iterator<int>(std::cout, ","));
+
+
+
+	int myTileCounter = myTMapSize.x*myTMapSize.y;
+
+	for (size_t i = 0; i < myTileCounter; i++)
+	{
+		myTiles[i]->myTileId = tempIds[i];
+	}
+
+
+	//TODO: Set texture
+	myTileCounter = 0;
+	for (size_t i = 0; i < myTMapSize.y; i++)
+	{
+		myTiles[myTileCounter]->myPosition->y = i * 16;
+		for (size_t j = 0; j < myTMapSize.x; j++)
+		{
+			myTiles[myTileCounter]->myPosition->x = j * 16;
+		}
+		myTileCounter++;
+	}
 }
+
 
 std::string TileMap::LoadFromXml(const std::string &aPath, const std::string &aFindLine)
 {
@@ -46,4 +77,16 @@ std::string TileMap::LoadFromXml(const std::string &aPath, const std::string &aF
 		}
 	}
 	return tempLine;
+}
+
+std::string TileMap::LoadIdFromXml(const std::string & aPath, const std::string & aFindLine)
+{
+	std::string tempLine; //The line to return
+	std::ifstream tempIn(aPath);
+	while (std::getline(tempIn, tempLine)) 
+	{
+		int tempFind = static_cast<int>(tempLine.find(aFindLine));
+	}
+
+	return 0;
 }

@@ -6,6 +6,15 @@
 #include <fstream>
 #include <algorithm>
 #include <filesystem>
+#include <sstream>
+#include <iterator>
+
+struct Tile
+{
+	int myTileId;
+	sf::Sprite *mySprites;
+	sf::Vector2f *myPosition;
+};
 
 class TileMap
 {
@@ -17,7 +26,9 @@ public:
 
 	std::string LoadFromXml(const std::string &aPath, const std::string &aFindLine);
 
-	sf::Vertex myTiles;
+	std::string myTileIdsString;
+	std::vector<int> myTileIds;
+	std::vector<Tile*> myTiles;
 	std::string 
 		myTMapTxtrFile,
 		myTMapTxtFile;
