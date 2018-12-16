@@ -170,6 +170,7 @@
     <ClInclude Include="SpriteAnim.h" />
     <ClInclude Include="Subscriber.h" />
     <ClInclude Include="TextureContainer.h" />
+    <ClInclude Include="TileMap.h" />
     <ClInclude Include="WorldManager.h" />
   </ItemGroup>
   <ItemGroup>
@@ -192,6 +193,7 @@
     <ClCompile Include="SpriteAnim.cpp" />
     <ClCompile Include="Subscriber.cpp" />
     <ClCompile Include="TextureContainer.cpp" />
+    <ClCompile Include="TileMap.cpp" />
     <ClCompile Include="WorldManager.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
