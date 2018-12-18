@@ -9,6 +9,7 @@
 #include "WorldManager.h"
 #include "EnemyManager.h"
 #include "CollisionManager.h"
+#include "ObjectManager.h"
 
 class Game
 {
@@ -26,6 +27,7 @@ public:
 	Player *myPlayer;
 	EnemyManager myEM;
 	CollisionManager myCM;
+	ObjectManager myObjM;
 };
 
 #endif

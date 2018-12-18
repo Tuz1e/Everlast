@@ -105,6 +105,12 @@
     <ClInclude Include="Barrel.h">
       <Filter>Header Files\Filters\Objects</Filter>
     </ClInclude>
+    <ClInclude Include="Object.h">
+      <Filter>Header Files\Filters\Object Definitions</Filter>
+    </ClInclude>
+    <ClInclude Include="ObjectManager.h">
+      <Filter>Header Files\Filters\Managers</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="pch.cpp">
@@ -157,6 +163,12 @@
     </ClCompile>
     <ClCompile Include="Barrel.cpp">
       <Filter>Source Files\Filters\Objects</Filter>
+    </ClCompile>
+    <ClCompile Include="Object.cpp">
+      <Filter>Source Files\Filters\Object Definitions</Filter>
+    </ClCompile>
+    <ClCompile Include="ObjectManager.cpp">
+      <Filter>Source Files\Filters\Managers</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

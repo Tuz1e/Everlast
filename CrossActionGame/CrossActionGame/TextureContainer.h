@@ -11,6 +11,8 @@
 #define SKELETON_ATTACK_TEXTURE "Content/Textures/Enemy/skeleton_attack.png"
 #define SKELETON_HIT_TEXTURE "Content/Textures/Enemy/skeleton_hit.png"
 
+#define BARREL_IDLE_TEXTURE "Content/Textures/Objects/barrel.png"
+
 #include <vector>
 
 class TextureContainer

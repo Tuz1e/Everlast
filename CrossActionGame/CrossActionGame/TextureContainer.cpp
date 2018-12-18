@@ -14,6 +14,7 @@ TextureContainer::TextureContainer()
 		SetTextures(SKELETON_WALK, SKELETON_WALK_TEXTURE, 1, 13, 13);
 		SetTextures(SKELETON_ATTACK, SKELETON_ATTACK_TEXTURE, 1, 18, 18);
 		SetTextures(SKELETON_HIT, SKELETON_HIT_TEXTURE, 1, 8, 8);
+		SetTextures(BARREL_IDLE, BARREL_IDLE_TEXTURE, 1, 1, 1);
 
 		printf("\nLoaded textures.");
 	}

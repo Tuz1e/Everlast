@@ -15,12 +15,15 @@ public:
 	void Update(float &aDeltaTime) override;
 	void Render(sf::RenderWindow &aWindow) override;
 	void Attacking(float &aDeltaTime);
+	sf::Vector2f GetVelocity();
+	bool GetPickupFlag();
 
 
 private:
 	int myIdleCounter;
 	int myAttackAnimationLength;
-	bool myPressFlag;
+	bool myPressFlag,
+		myPickupFlag;
 };
 
 #endif

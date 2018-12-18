@@ -13,7 +13,7 @@ void EnemyManager::Initialize()
 {
 	for (size_t i = 0; i < 1; i++)
 	{
-		GetEnemy((EnemyTypes)Randomize(0, EnemyTypes::Size-1)); //-1 because of "Size"
+		GetEnemy((EnemyTypes)Randomize(0, EnemyTypes::SIZE-1)); //-1 because of "Size"
 		myEnemies[i]->Initialize();
 	}
 }
@@ -61,7 +61,7 @@ void EnemyManager::GetEnemy(EnemyTypes anEnemy)
 {
 	switch (anEnemy) 
 	{
-	case SKW:
+	case EnemyTypes::SKW:
 		myEnemies.push_back(new SkeletonWarrior());
 		break;
 	}

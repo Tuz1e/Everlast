@@ -25,6 +25,7 @@ void Player::Initialize()
 	myPressFlag = false;
 	myWeaponRange = 60.0f;
 	myAttackingFlag = false;
+	myPickupFlag = false;
 	myDamage = 25;
 }
 
@@ -80,6 +81,7 @@ void Player::Update(float & aDeltaTime)
 	myVelocity = sf::Vector2f(0, 0);
 	myHitbox.setPosition(myPosition);
 	myWeaponBB.setPosition(sf::Vector2f(myPosition.x + myWeaponRange * ((mySprite.GetFlip() == FlipSides::RIGHT) ? 1 : -0.5), myPosition.y));
+	
 	if (sf::Keyboard::isKeyPressed(sf::Keyboard::W))
 	{
 		myVelocity.y = -mySpeed.y;
@@ -95,6 +97,15 @@ void Player::Update(float & aDeltaTime)
 	if (sf::Keyboard::isKeyPressed(sf::Keyboard::D))
 	{
 		myVelocity.x = mySpeed.x;
+	}
+
+	if (sf::Mouse::isButtonPressed(sf::Mouse::Middle)) 
+	{
+		myPickupFlag = true;
+	}
+	else
+	{
+		myPickupFlag = false;
 	}
 
 	switch (myActionState)
@@ -168,4 +179,14 @@ void Player::Attacking(float &aDeltaTime)
 	{
 		myPressFlag = false;
 	}
+}
+
+sf::Vector2f Player::GetVelocity()
+{
+	return myVelocity;
+}
+
+bool Player::GetPickupFlag()
+{
+	return myPickupFlag;
 }

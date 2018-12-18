@@ -3,6 +3,7 @@
 
 #include "Entity.h"
 
+//For enemy specific things
 class Enemy : public Entity
 {
 public:

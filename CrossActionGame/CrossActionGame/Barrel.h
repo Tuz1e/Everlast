@@ -1,11 +1,18 @@
 #ifndef BARREL_H
 #define BARREL_H
 
-class Barrel
+#include "Object.h"
+
+class Barrel : public Object
 {
 public:
 	Barrel();
 	~Barrel();
+
+	void Initialize() override;
+	void LoadContent(TextureContainer &aContainer) override;
+	void Update(float & aDeltaTime, const sf::RectangleShape &aHitbox, const sf::Vector2f & aVelocity, bool aPickupFlag) override;
+	void Render(sf::RenderWindow &aWindow) override;
 };
 
 #endif

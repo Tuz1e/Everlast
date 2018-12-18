@@ -8,7 +8,7 @@ enum EnemyTypes
 {
 	SKW,
 
-	Size
+	SIZE
 };
 
 class EnemyManager
