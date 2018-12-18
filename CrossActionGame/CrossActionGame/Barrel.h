@@ -10,7 +10,7 @@ public:
 	~Barrel();
 
 	void Initialize() override;
-	void LoadContent(TextureContainer &aContainer) override;
+	void LoadContent(TextureContainer &aTxtrContainer) override;
 	void Update(float & aDeltaTime, const sf::RectangleShape &aHitbox, const sf::Vector2f & aVelocity, bool aPickupFlag) override;
 	void Render(sf::RenderWindow &aWindow) override;
 };

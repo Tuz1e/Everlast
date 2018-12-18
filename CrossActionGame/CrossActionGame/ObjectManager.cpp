@@ -13,9 +13,15 @@ ObjectManager::~ObjectManager()
 
 void ObjectManager::Initialize()
 {
-	for (size_t i = 0; i < 5; i++)
+	for (size_t i = 0; i < 8; i++)
 	{
-		GetObject((ObjectTypes)Randomize(0, ObjectTypes::LENGTH - 1)); //-1 because of "Size"
+		GetObject((ObjectTypes)Randomize(0, ObjectTypes::LENGTH - 1)); //-1 because of "Length"
+		myObjects[i]->Initialize();
+		myObjects[i]->SetPosition(sf::Vector2f(Randomize(100.0f, 1000.0f), Randomize(100.0f, 550.0f)));
+	}
+	for (size_t i = 9; i < 11; i++)
+	{
+		GetObject(ObjectTypes::XMARK); //-1 because of "Length"
 		myObjects[i]->Initialize();
 		myObjects[i]->SetPosition(sf::Vector2f(Randomize(100.0f, 1000.0f), Randomize(100.0f, 550.0f)));
 	}
@@ -56,6 +62,9 @@ void ObjectManager::GetObject(ObjectTypes anObject)
 	{
 	case ObjectTypes::BARREL:
 		myObjects.push_back(new Barrel());
+		break;
+	case ObjectTypes::X:
+		myObjects.push_back(new XMark());
 		break;
 	}
 }

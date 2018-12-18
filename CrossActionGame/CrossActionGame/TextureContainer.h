@@ -12,6 +12,7 @@
 #define SKELETON_HIT_TEXTURE "Content/Textures/Enemy/skeleton_hit.png"
 
 #define BARREL_IDLE_TEXTURE "Content/Textures/Objects/barrel.png"
+#define XMARK_IDLE_TEXTURE "Content/Textures/Objects/xmark.png"
 
 #include <vector>
 

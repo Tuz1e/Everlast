@@ -111,6 +111,9 @@
     <ClInclude Include="ObjectManager.h">
       <Filter>Header Files\Filters\Managers</Filter>
     </ClInclude>
+    <ClInclude Include="XMark.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="pch.cpp">
@@ -169,6 +172,9 @@
     </ClCompile>
     <ClCompile Include="ObjectManager.cpp">
       <Filter>Source Files\Filters\Managers</Filter>
+    </ClCompile>
+    <ClCompile Include="XMark.cpp">
+      <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

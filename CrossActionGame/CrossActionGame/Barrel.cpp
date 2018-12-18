@@ -13,6 +13,7 @@ void Barrel::Initialize()
 {
 	myActionState = ActionState::IDLE;
 	myPushedFlag = false;
+	myPickupFlag = true;
 }
 
 void Barrel::LoadContent(TextureContainer & aTxtrContainer)
@@ -57,7 +58,7 @@ void Barrel::LoadContent(TextureContainer & aTxtrContainer)
 void Barrel::Update(float & aDeltaTime, const sf::RectangleShape &aHitbox, const sf::Vector2f & aVelocity, bool aPickupFlag)
 {
 	myPushedFlag = false;
-	if (myHitbox.getGlobalBounds().intersects(aHitbox.getGlobalBounds()) && aPickupFlag) 
+	if (myHitbox.getGlobalBounds().intersects(aHitbox.getGlobalBounds()) && aPickupFlag && myPickupFlag) 
 	{
 		printf("Barrel collided with Player");
 		myPushedFlag = true;

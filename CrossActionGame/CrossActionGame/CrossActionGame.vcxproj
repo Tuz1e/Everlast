@@ -175,6 +175,7 @@
     <ClInclude Include="TextureContainer.h" />
     <ClInclude Include="TileMap.h" />
     <ClInclude Include="WorldManager.h" />
+    <ClInclude Include="XMark.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Barrel.cpp" />
@@ -201,6 +202,7 @@
     <ClCompile Include="TextureContainer.cpp" />
     <ClCompile Include="TileMap.cpp" />
     <ClCompile Include="WorldManager.cpp" />
+    <ClCompile Include="XMark.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

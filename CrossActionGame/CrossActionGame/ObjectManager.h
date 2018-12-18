@@ -3,11 +3,12 @@
 
 #include "Object.h"
 #include "Barrel.h"
+#include "XMark.h"
 
 enum ObjectTypes
 {
 	BARREL,
-
+	XMARK,
 	LENGTH
 };
 

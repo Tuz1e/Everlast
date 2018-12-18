@@ -14,7 +14,8 @@ public:
 	virtual void Update(float & aDeltaTime, const sf::RectangleShape &aHitbox, const sf::Vector2f & aVelocity, bool aPickupFlag);
 	virtual void CalcMove(float &aDeltaTime, const sf::Vector2f &aVelocity);
 
-	bool myPushedFlag;
+	bool myPushedFlag,
+		myPickupFlag;
 
 	//float
 	//	myMass = 0.0f,
