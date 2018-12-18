@@ -12,7 +12,7 @@
 struct Tile
 {
 	int myTileId;
-	sf::Sprite *mySprites;
+	sf::Sprite *mySprite;
 	sf::Vector2f *myPosition;
 };
 
@@ -23,12 +23,14 @@ public:
 	~TileMap();
 
 	void LoadContent();
+	void Render(sf::RenderWindow &aWindow);
 
 	std::string LoadFromXml(const std::string &aPath, const std::string &aFindLine);
 
+	sf::Sprite mySprite;
 	std::string myTileIdsString;
 	std::vector<Tile*> myTiles;
-	std::string 
+	std::string
 		myTMapTxtrFile,
 		myTMapTxtFile;
 	sf::Vector2i myTMapSize;

@@ -102,6 +102,9 @@
     <ClInclude Include="TileMap.h">
       <Filter>Header Files\Filters\Managers</Filter>
     </ClInclude>
+    <ClInclude Include="Barrel.h">
+      <Filter>Header Files\Filters\Objects</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="pch.cpp">
@@ -151,6 +154,9 @@
     </ClCompile>
     <ClCompile Include="TileMap.cpp">
       <Filter>Source Files\Filters\Managers</Filter>
+    </ClCompile>
+    <ClCompile Include="Barrel.cpp">
+      <Filter>Source Files\Filters\Objects</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

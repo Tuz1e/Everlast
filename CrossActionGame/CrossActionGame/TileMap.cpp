@@ -5,30 +5,25 @@ TileMap::TileMap()
 {
 }
 
-
 TileMap::~TileMap()
 {
 }
 
 void TileMap::LoadContent()
 {
-	myTMapTxtFile = "/Content/Maps/Jungle/jungle_tilemap.xml";
+	myTMapTxtFile = "Content/Maps/Jungle/jungle_tilemap.xml";
 	myTMapTxtrFile = LoadFromXml(myTMapTxtFile, "file");
 	myTMapSize = sf::Vector2i
 	(
 		std::stoi(LoadFromXml(myTMapTxtFile, "width")),
 		std::stoi(LoadFromXml(myTMapTxtFile, "height"))
 	);
-	myTiles.resize(myTMapSize.x*myTMapSize.y);
-
 	myTileIdsString = LoadFromXml(myTMapTxtFile, "map");
 
 	std::istringstream tempISStream(myTileIdsString);
 	std::vector<int> tempIds{ std::istream_iterator<int>(tempISStream),
 					   std::istream_iterator<int>() };
 	std::copy(tempIds.begin(), tempIds.end(), std::ostream_iterator<int>(std::cout, ","));
-
-
 
 	int myTileCounter = myTMapSize.x*myTMapSize.y;
 
@@ -37,6 +32,24 @@ void TileMap::LoadContent()
 		myTiles[i]->myTileId = tempIds[i];
 	}
 
+	sf::Texture tempTexture;
+	tempTexture.loadFromFile("Content/Maps/Jungle/jungle_tileset.png");
+	mySprite.setTexture(tempTexture);
+
+	myTiles.resize(myTMapSize.x*myTMapSize.y);
+	for (size_t i = 0; i < myTMapSize.x*myTMapSize.y; i++)
+	{
+		myTiles[i]->mySprite->setTexture(tempTexture);
+		//myTiles[i]->mySprite->setTextureRect
+		//(
+		//	myTiles[i]->mySprite->getTexture()->getSize().x / 16,
+		//	(int)myTiles[i]->mySprite->getTexture()->getSize().y * 16,
+		//	(int)myTiles[i]->mySprite->getTexture()->getSize().x / 16,
+		//	(int)myTiles[i]->mySprite->getTexture()->getSize().y / 16,
+		//	);
+
+		//myTiles[i]->mySprite->setTextureRect(myTiles[i]->mySprite->getTexture()->getSize().x / 16);
+	}
 
 	//TODO: Set texture
 	myTileCounter = 0;
@@ -51,6 +64,13 @@ void TileMap::LoadContent()
 	}
 }
 
+void TileMap::Render(sf::RenderWindow & aWindow)
+{
+	for (size_t i = 0; i < myTiles.size(); i++)
+	{
+		aWindow.draw(*myTiles[i]->mySprite);
+	}
+}
 
 std::string TileMap::LoadFromXml(const std::string &aPath, const std::string &aFindLine)
 {
@@ -77,16 +97,4 @@ std::string TileMap::LoadFromXml(const std::string &aPath, const std::string &aF
 		}
 	}
 	return tempLine;
-}
-
-std::string TileMap::LoadIdFromXml(const std::string & aPath, const std::string & aFindLine)
-{
-	std::string tempLine; //The line to return
-	std::ifstream tempIn(aPath);
-	while (std::getline(tempIn, tempLine)) 
-	{
-		int tempFind = static_cast<int>(tempLine.find(aFindLine));
-	}
-
-	return 0;
 }

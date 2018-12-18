@@ -10,7 +10,7 @@ public:
 	CollisionManager();
 	~CollisionManager();
 
-	void Update(Player *aPlayer, EnemyManager anEnemyManager);
+	void Update(Player *aPlayer, EnemyManager &anEnemyManager);
 };
 
 #endif
