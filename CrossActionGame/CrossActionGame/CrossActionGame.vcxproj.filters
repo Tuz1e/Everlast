@@ -16,9 +16,6 @@
     <Filter Include="Source Files\Filters">
       <UniqueIdentifier>{9f145623-8e65-4ef1-8125-9d8721de7219}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Source Files\Filters\Enemies">
-      <UniqueIdentifier>{cf6c4a3f-6d2a-4c45-a20c-c66666c0ee24}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Source Files\Filters\Object Definitions">
       <UniqueIdentifier>{2852c72e-3cfb-4a68-8174-298123fd3761}</UniqueIdentifier>
     </Filter>
@@ -34,9 +31,6 @@
     <Filter Include="Header Files\Filters\Managers">
       <UniqueIdentifier>{954145e4-7c39-44ea-8572-84eb103a639e}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Header Files\Filters\Enemies">
-      <UniqueIdentifier>{3e44f0b3-5b9d-43d0-9a70-c37ebbdf144e}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Header Files\Filters\Object Definitions">
       <UniqueIdentifier>{940df98d-c1bc-481c-9315-20a961d6a56e}</UniqueIdentifier>
     </Filter>
@@ -46,14 +40,26 @@
     <Filter Include="Header Files\Filters\Post">
       <UniqueIdentifier>{359bb39c-9e3e-4e3b-94ce-459c328f68e1}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Header Files\Filters\Objects">
-      <UniqueIdentifier>{a61ca0f0-9763-48dd-9adc-c25afb449c74}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Source Files\Filters\Objects">
-      <UniqueIdentifier>{5354c16c-f4b0-4c15-b620-f10ccdebde10}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Source Files\Filters\Managers">
       <UniqueIdentifier>{8fc41558-f26d-4550-a68c-c5f9bd6b8077}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Filters\Entities">
+      <UniqueIdentifier>{e3569665-f3a4-4416-ac87-c974f1e03e7f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Filters\Entities\Enemies">
+      <UniqueIdentifier>{3e44f0b3-5b9d-43d0-9a70-c37ebbdf144e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Filters\Entities\Objects">
+      <UniqueIdentifier>{a61ca0f0-9763-48dd-9adc-c25afb449c74}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Filters\Entities">
+      <UniqueIdentifier>{e6ea6e68-e4c6-420b-9b49-1263be537be8}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Filters\Entities\Enemies">
+      <UniqueIdentifier>{cf6c4a3f-6d2a-4c45-a20c-c66666c0ee24}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Filters\Entities\Objects">
+      <UniqueIdentifier>{5354c16c-f4b0-4c15-b620-f10ccdebde10}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -63,11 +69,8 @@
     <ClInclude Include="Game.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Player.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="SkeletonWarrior.h">
-      <Filter>Header Files\Filters\Enemies</Filter>
+      <Filter>Header Files\Filters\Entities\Enemies</Filter>
     </ClInclude>
     <ClInclude Include="Memorandum.h">
       <Filter>Header Files\Filters\Post</Filter>
@@ -103,7 +106,7 @@
       <Filter>Header Files\Filters\Managers</Filter>
     </ClInclude>
     <ClInclude Include="Barrel.h">
-      <Filter>Header Files\Filters\Objects</Filter>
+      <Filter>Header Files\Filters\Entities\Objects</Filter>
     </ClInclude>
     <ClInclude Include="Object.h">
       <Filter>Header Files\Filters\Object Definitions</Filter>
@@ -112,7 +115,10 @@
       <Filter>Header Files\Filters\Managers</Filter>
     </ClInclude>
     <ClInclude Include="XMark.h">
-      <Filter>Header Files</Filter>
+      <Filter>Header Files\Filters\Entities\Objects</Filter>
+    </ClInclude>
+    <ClInclude Include="Player.h">
+      <Filter>Header Files\Filters\Entities</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -125,11 +131,8 @@
     <ClCompile Include="Game.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Player.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="SkeletonWarrior.cpp">
-      <Filter>Source Files\Filters\Enemies</Filter>
+      <Filter>Source Files\Filters\Entities\Enemies</Filter>
     </ClCompile>
     <ClCompile Include="Memorandum.cpp">
       <Filter>Source Files\Filters\Post</Filter>
@@ -165,7 +168,7 @@
       <Filter>Source Files\Filters\Managers</Filter>
     </ClCompile>
     <ClCompile Include="Barrel.cpp">
-      <Filter>Source Files\Filters\Objects</Filter>
+      <Filter>Source Files\Filters\Entities\Objects</Filter>
     </ClCompile>
     <ClCompile Include="Object.cpp">
       <Filter>Source Files\Filters\Object Definitions</Filter>
@@ -174,7 +177,10 @@
       <Filter>Source Files\Filters\Managers</Filter>
     </ClCompile>
     <ClCompile Include="XMark.cpp">
-      <Filter>Source Files</Filter>
+      <Filter>Source Files\Filters\Entities\Objects</Filter>
+    </ClCompile>
+    <ClCompile Include="Player.cpp">
+      <Filter>Source Files\Filters\Entities</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

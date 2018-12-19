@@ -1,6 +1,5 @@
 #include "pch.h"
 #include "Game.h"
-#include "PostNord.h"
 
 class TextureContainer;
 
@@ -10,44 +9,62 @@ Game::Game()
 
 Game::~Game()
 {
-	PtrDelete(myPlayer);
 }
 
 void Game::Initialize()
 {
-	PostNord::Initialize();
+	//PostNord::Initialize();
 
-	myPlayer = new Player();
-	myPlayer->Initialize();
-	myEM.Initialize();
-	myObjM.Initialize();
+	myGState = GameState::GAME;
+	myWM.Initialize();
+
 	printf("\nInitialized Game.");
 }
 
 void Game::LoadContent(sf::RenderWindow &aWindow)
 {
 	TextureContainer tempTextureCon;
-
-	myPlayer->LoadContent(tempTextureCon);
-	myEM.LoadContent(tempTextureCon);
-	myObjM.LoadContent(tempTextureCon);
-	printf("\nLoaded Content.");
+	myWM.LoadContent(tempTextureCon, aWindow);
+	printf("\nLoaded Game Content.");
 }
 
 void Game::Update(float &aDeltaTime)
 {
-	myPlayer->Update(aDeltaTime);
-	myEM.Update(aDeltaTime, myPlayer->GetPosition());
+	switch (myGState)
+	{
+	case GameState::MENU:
+		//TODO: Insert menu update sequence
+		break;
+	case GameState::GAME:
+		myWM.Update(aDeltaTime);
+		//TODO: Insert ability to pause
+		break;
+	case GameState::PAUSE:
+		//TODO: When pausing
+		break;
+	}
 
-	myCM.Update(myPlayer, myEM);
-	myObjM.Update(aDeltaTime, myPlayer->GetHitbox(), myPlayer->GetVelocity(), myPlayer->GetPickupFlag());
+	//myPlayer->Update(aDeltaTime);
+	//myEM.Update(aDeltaTime, myPlayer->GetPosition());
+
+	//myCM.Update(myPlayer, myEM);
+	//myObjM.Update(aDeltaTime, myPlayer->GetHitbox(), myPlayer->GetVelocity(), myPlayer->GetPickupFlag());
 }
 
 void Game::Render(sf::RenderWindow &aWindow)
 {
-	myEM.Render(aWindow);
-	myPlayer->Render(aWindow);
-	myObjM.Render(aWindow);
+	switch (myGState)
+	{
+	case GameState::MENU:
+		//TODO: Insert menu render sequence
+		break;
+	case GameState::GAME:
+		myWM.Render(aWindow);
+		break;
+	case GameState::PAUSE:
+		//TODO: Insert pause sequence
+		break;
+	}
 }
 
 void Game::LateRender(sf::RenderWindow & aWindow)

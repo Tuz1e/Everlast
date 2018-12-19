@@ -26,9 +26,9 @@ void SkeletonWarrior::Initialize()
 
 void SkeletonWarrior::LoadContent(TextureContainer & aTxtrContainer)
 {
-	SetSpriteSheet(SKELETON_IDLE, IDLE, &aTxtrContainer); //Sets the idle animation
-	SetSpriteSheet(SKELETON_WALK, WALK, &aTxtrContainer); //Sets the walking animation
-	SetSpriteSheet(SKELETON_ATTACK, ATTACK, &aTxtrContainer); //Sets the attack animation
+	SetSpriteSheet(TextureID::SKELETON_IDLE, ActionState::IDLE, &aTxtrContainer); //Sets the idle animation
+	SetSpriteSheet(TextureID::SKELETON_WALK, ActionState::WALK, &aTxtrContainer); //Sets the walking animation
+	SetSpriteSheet(TextureID::SKELETON_ATTACK, ActionState::ATTACK, &aTxtrContainer); //Sets the attack animation
 
 	mySprite.Flip(RIGHT);
 
@@ -122,7 +122,7 @@ void SkeletonWarrior::Update(float & aDeltaTime, sf::Vector2f &aPosition)
 void SkeletonWarrior::Render(sf::RenderWindow & aWindow)
 {
 	mySprite.Flip((myDirection.x < (int)mySprite.GetSprite().getPosition().x) ? FlipSides::LEFT : FlipSides::RIGHT);
-	aWindow.draw(myHitbox);
-	aWindow.draw(myWeaponBB);
+	//aWindow.draw(myHitbox);
+	//aWindow.draw(myWeaponBB);
 	mySprite.Render(aWindow);
 }

@@ -18,3 +18,13 @@ void Enemy::Update(float & aDeltaTime, sf::Vector2f & aPosition)
 		mySprite.UpdateAnimation(aDeltaTime, myPosition, true);
 	}
 }
+
+bool * Enemy::GetExistingFlag()
+{
+	return myExistingFlag;
+}
+
+void Enemy::SetExistingFlag(bool *aStatement)
+{
+	myExistingFlag = aStatement;
+}

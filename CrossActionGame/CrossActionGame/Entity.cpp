@@ -121,3 +121,8 @@ sf::RectangleShape Entity::GetHitbox()
 {
 	return myHitbox;
 }
+
+bool Entity::GetAliveFlag()
+{
+	return myAliveFlag;
+}

@@ -12,7 +12,7 @@ Object::~Object()
 {
 }
 
-void Object::Update(float & aDeltaTime, const sf::RectangleShape &aHitbox, const sf::Vector2f & aVelocity, bool aPickupFlag)
+void Object::Update(float & aDeltaTime, const sf::Vector2f & aVelocity)
 {
 }
 
@@ -51,4 +51,24 @@ void Object::CalcMove(float &aDeltaTime, const sf::Vector2f & aVelocity)
 	//	//I won't even bother doing this rn, I don't need it lul
 	//}
 	myPosition += aVelocity * aDeltaTime;
+}
+
+void Object::SetPickedUpFlag(bool aStatement)
+{
+	myPickedUpFlag = aStatement;
+}
+
+bool Object::GetPickedUpFlag()
+{
+	return myPickedUpFlag;
+}
+
+bool Object::GetPickupFlag()
+{
+	return myPickupFlag;
+}
+
+ObjectTypes Object::GetType()
+{
+	return myObjType;
 }

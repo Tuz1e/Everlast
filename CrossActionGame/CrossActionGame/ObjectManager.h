@@ -5,13 +5,6 @@
 #include "Barrel.h"
 #include "XMark.h"
 
-enum ObjectTypes
-{
-	BARREL,
-	XMARK,
-	LENGTH
-};
-
 class ObjectManager
 {
 public:
@@ -20,12 +13,13 @@ public:
 
 	void Initialize();
 	void LoadContent(TextureContainer &aTxtrContainer);
-	void Update(float & aDeltaTime, const sf::RectangleShape &aHitbox, const sf::Vector2f & aVelocity, bool aPickupFlag);
+	void Update(float & aDeltaTime, const sf::Vector2f &aVelocity);
 	void Render(sf::RenderWindow &aWindow);
 	std::vector<Object*> GetObjects();
 
 private:
 	void GetObject(ObjectTypes anObject);
+
 	std::vector<Object*> myObjects;
 };
 

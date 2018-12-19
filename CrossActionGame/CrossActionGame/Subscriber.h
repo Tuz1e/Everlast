@@ -5,10 +5,9 @@
 
 enum MessageType
 {
-	PlayerHit,
-	EnemyHit,
+	OpenPortal,
 
-	MessageCount
+	Count
 };
 
 class Subscriber
@@ -17,8 +16,8 @@ public:
 	Subscriber();
 	~Subscriber();
 
-	void SendMessage(Memorandum *aMemorandum, const MessageType &aMessage);
-	virtual void ReceiveMessage(Memorandum *aMemorandum, const MessageType &aMessage) = 0;
+	void SendMessage(const MessageType &aMessage);
+	virtual void ReceiveMessage(const MessageType &aMessage) = 0;
 	//TODO: Add MessageType
 };
 

@@ -12,13 +12,13 @@ Barrel::~Barrel()
 void Barrel::Initialize()
 {
 	myActionState = ActionState::IDLE;
-	myPushedFlag = false;
 	myPickupFlag = true;
+	myObjType = ObjectTypes::BARREL;
 }
 
 void Barrel::LoadContent(TextureContainer & aTxtrContainer)
 {
-	SetSpriteSheet(BARREL_IDLE, 0, &aTxtrContainer);
+	SetSpriteSheet(TextureID::BARREL_IDLE, 0, &aTxtrContainer);
 	mySprite.SetTexture(mySpriteSheets[myActionState]->myTexture);
 
 	mySprite.SetScale(2.0f, 2.0f);
@@ -55,13 +55,10 @@ void Barrel::LoadContent(TextureContainer & aTxtrContainer)
 	);
 }
 
-void Barrel::Update(float & aDeltaTime, const sf::RectangleShape &aHitbox, const sf::Vector2f & aVelocity, bool aPickupFlag)
+void Barrel::Update(float & aDeltaTime, const sf::Vector2f & aVelocity)
 {
-	myPushedFlag = false;
-	if (myHitbox.getGlobalBounds().intersects(aHitbox.getGlobalBounds()) && aPickupFlag && myPickupFlag) 
+	if (myPickedUpFlag)
 	{
-		printf("Barrel collided with Player");
-		myPushedFlag = true;
 		CalcMove(aDeltaTime, aVelocity);
 		mySprite.SetPosition(myPosition.x, myPosition.y);
 		myHitbox.setPosition(myPosition);
@@ -70,6 +67,6 @@ void Barrel::Update(float & aDeltaTime, const sf::RectangleShape &aHitbox, const
 
 void Barrel::Render(sf::RenderWindow & aWindow)
 {
-	aWindow.draw(myHitbox);
+	//aWindow.draw(myHitbox);
 	mySprite.Render(aWindow);
 }

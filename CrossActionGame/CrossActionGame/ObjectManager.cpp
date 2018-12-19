@@ -1,7 +1,6 @@
 #include "pch.h"
 #include "ObjectManager.h"
 
-
 ObjectManager::ObjectManager()
 {
 }
@@ -13,15 +12,15 @@ ObjectManager::~ObjectManager()
 
 void ObjectManager::Initialize()
 {
-	for (size_t i = 0; i < 8; i++)
+	for (size_t i = 0; i < 3; i++)
 	{
-		GetObject((ObjectTypes)Randomize(0, ObjectTypes::LENGTH - 1)); //-1 because of "Length"
+		GetObject(ObjectTypes::XMARK);
 		myObjects[i]->Initialize();
 		myObjects[i]->SetPosition(sf::Vector2f(Randomize(100.0f, 1000.0f), Randomize(100.0f, 550.0f)));
 	}
-	for (size_t i = 9; i < 11; i++)
+	for (size_t i = 3; i < 7; i++)
 	{
-		GetObject(ObjectTypes::XMARK); //-1 because of "Length"
+		GetObject(ObjectTypes::BARREL);
 		myObjects[i]->Initialize();
 		myObjects[i]->SetPosition(sf::Vector2f(Randomize(100.0f, 1000.0f), Randomize(100.0f, 550.0f)));
 	}
@@ -35,11 +34,11 @@ void ObjectManager::LoadContent(TextureContainer & aTxtrContainer)
 	}
 }
 
-void ObjectManager::Update(float & aDeltaTime, const sf::RectangleShape &aHitbox, const sf::Vector2f & aVelocity, bool aPickupFlag)
+void ObjectManager::Update(float & aDeltaTime, const sf::Vector2f &aVelocity)
 {
 	for (size_t i = 0; i < myObjects.size(); i++)
 	{
-		myObjects[i]->Update(aDeltaTime, aHitbox, aVelocity, aPickupFlag);
+		myObjects[i]->Update(aDeltaTime, aVelocity);
 	}
 }
 
@@ -63,7 +62,7 @@ void ObjectManager::GetObject(ObjectTypes anObject)
 	case ObjectTypes::BARREL:
 		myObjects.push_back(new Barrel());
 		break;
-	case ObjectTypes::X:
+	case ObjectTypes::XMARK:
 		myObjects.push_back(new XMark());
 		break;
 	}

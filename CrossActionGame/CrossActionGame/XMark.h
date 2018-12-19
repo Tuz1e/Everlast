@@ -11,7 +11,7 @@ public:
 
 	void Initialize() override;
 	void LoadContent(TextureContainer &aTxtrContainer) override;
-	void Update(float & aDeltaTime, const sf::RectangleShape &aHitbox, const sf::Vector2f & aVelocity, bool aPickupFlag) override;
+	void Update(float & aDeltaTime, const sf::Vector2f & aVelocity) override;
 	void Render(sf::RenderWindow &aWindow) override;
 };
 

@@ -5,11 +5,14 @@
 #define AUTHOR "Pontuz Klasson"
 #define REPOSITORY "https://github.com/Tuz1e/Everlast"
 
-#include "Player.h"
 #include "WorldManager.h"
-#include "EnemyManager.h"
-#include "CollisionManager.h"
-#include "ObjectManager.h"
+
+enum GameState
+{
+	MENU,
+	GAME,
+	PAUSE
+};
 
 class Game
 {
@@ -23,11 +26,12 @@ public:
 	void Render(sf::RenderWindow &aWindow);
 	void LateRender(sf::RenderWindow &aWindow);
 
+	GameState myGState;
 	WorldManager myWM;
-	Player *myPlayer;
-	EnemyManager myEM;
-	CollisionManager myCM;
-	ObjectManager myObjM;
+	//Player *myPlayer;
+	//EnemyManager myEM;
+	//CollisionManager myCM;
+	//ObjectManager myObjM;
 };
 
 #endif

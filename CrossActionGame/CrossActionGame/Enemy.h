@@ -11,12 +11,17 @@ public:
 	~Enemy();
 
 	virtual void Update(float &aDeltaTime, sf::Vector2f &aPosition);
+	virtual bool *GetExistingFlag();
+	virtual void SetExistingFlag(bool *aStatement);
 
 protected:
-	bool myTargetAcquired;
+	bool 
+		myTargetAcquired,
+		*myExistingFlag = false;
 	sf::Vector2f myDirection;
 	float myRecogDistance; //Recognition Distance
 	int myHitDistance;
+	
 };
 
 #endif

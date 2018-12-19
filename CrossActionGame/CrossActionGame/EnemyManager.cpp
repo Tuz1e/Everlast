@@ -11,7 +11,7 @@ EnemyManager::~EnemyManager()
 
 void EnemyManager::Initialize()
 {
-	for (size_t i = 0; i < 1; i++)
+	for (size_t i = 0; i < Randomize(3, 5); i++)
 	{
 		GetEnemy((EnemyTypes)Randomize(0, EnemyTypes::SIZE-1)); //-1 because of "Size"
 		myEnemies[i]->Initialize();

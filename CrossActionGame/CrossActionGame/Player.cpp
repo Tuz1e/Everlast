@@ -20,7 +20,6 @@ void Player::Initialize()
 	myIdleCounter = 0;
 	myHealth = 150;
 	mySpeed = sf::Vector2f(2.5f, 2.5f);
-	myPosition = sf::Vector2f(100.0f, 100.0f);
 	myActionState = ActionState::IDLE;
 	myPressFlag = false;
 	myWeaponRange = 60.0f;
@@ -31,9 +30,9 @@ void Player::Initialize()
 
 void Player::LoadContent(TextureContainer &aTxtrContainer)
 {
-	SetSpriteSheet(PLAYER_IDLE, ActionState::IDLE, &aTxtrContainer);
-	SetSpriteSheet(PLAYER_WALK, ActionState::WALK, &aTxtrContainer);
-	SetSpriteSheet(PLAYER_ATTACK, ActionState::ATTACK, &aTxtrContainer);
+	SetSpriteSheet(TextureID::PLAYER_IDLE, ActionState::IDLE, &aTxtrContainer);
+	SetSpriteSheet(TextureID::PLAYER_WALK, ActionState::WALK, &aTxtrContainer);
+	SetSpriteSheet(TextureID::PLAYER_ATTACK, ActionState::ATTACK, &aTxtrContainer);
 	SetActionState(4.5f);
 	mySprite.SetScale(3.0f, 3.0f);
 	mySprite.Flip(RIGHT);
@@ -139,7 +138,7 @@ void Player::Update(float & aDeltaTime)
 		}
 		else 
 		{
-			myAttackAnimationLength--;
+			myAttackAnimationLength -= 1 * aDeltaTime;
 		}
 		break;
 	}
@@ -150,8 +149,8 @@ void Player::Update(float & aDeltaTime)
 void Player::Render(sf::RenderWindow & aWindow)
 {
 	mySprite.Flip((sf::Mouse::getPosition(aWindow).x < (int)mySprite.GetSprite().getPosition().x) ? FlipSides::LEFT : FlipSides::RIGHT);
-	aWindow.draw(myHitbox);
-	aWindow.draw(myWeaponBB);
+	//aWindow.draw(myHitbox);
+	//aWindow.draw(myWeaponBB);
 	mySprite.Render(aWindow);
 }
 
@@ -172,7 +171,7 @@ void Player::Attacking(float &aDeltaTime)
 			SetActionState(6.5f);
 
 			//Literally no idea why adding 1.25f works, but it works, sooo... just gonna leave it there
-			myAttackAnimationLength = mySpriteSheets[ATTACK]->myColumns * 6.5f * aDeltaTime * 1.25f;
+			myAttackAnimationLength = mySpriteSheets[ATTACK]->myColumns * 6.5f;
 		}
 	}
 	else

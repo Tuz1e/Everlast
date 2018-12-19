@@ -39,6 +39,7 @@ public:
 	virtual int GetDamage();
 	virtual int GetHealth();
 	virtual sf::RectangleShape GetHitbox();
+	virtual bool GetAliveFlag();
 
 
 protected:
@@ -53,11 +54,12 @@ protected:
 	float myWeaponRange;
 	std::vector<Textures*> mySpriteSheets;
 	SpriteAnim mySprite;	
-	bool myAnimateFlag;
+	bool myAnimateFlag,
+		myAttackingFlag,
+		myAliveFlag = true;
 	sf::RectangleShape 
 		myWeaponBB,
 		myHitbox;
-	bool myAttackingFlag;
 };
 
 #endif

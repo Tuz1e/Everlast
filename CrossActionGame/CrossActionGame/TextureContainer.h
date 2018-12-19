@@ -1,6 +1,8 @@
 #ifndef TEXTURECONTAINER_H
 #define TEXTURECONTAINER_H
 
+#pragma region TextureLocations
+
 #define PLAYER_IDLE_TEXTURE "Content/Textures/Player/player_idle.png"
 #define PLAYER_RUN_TEXTURE "Content/Textures/Player/player_run.png"
 #define PLAYER_ATTACK_TEXTURE "Content/Textures/Player/player_attack.png"
@@ -13,6 +15,16 @@
 
 #define BARREL_IDLE_TEXTURE "Content/Textures/Objects/barrel.png"
 #define XMARK_IDLE_TEXTURE "Content/Textures/Objects/xmark.png"
+
+#define GREENPORTAL_ACTIVE_TEXTURE "Content/Textures/Effects/greenportal_spritesheet_active.png"
+#define GREENPORTAL_OPENING_TEXTURE "Content/Textures/Effects/greenportal_spritesheet_opening.png"
+#define GREENPORTAL_CLOSING_TEXTURE "Content/Textures/Effects/greenportal_spritesheet_closing.png"
+
+#define PURPLEPORTAL_ACTIVE_TEXTURE "Content/Textures/Effects/purpleportal_spritesheet_active.png"
+#define PURPLEPORTAL_OPENING_TEXTURE "Content/Textures/Effects/purpleportal_spritesheet_opening.png"
+#define PURPLEPORTAL_CLOSING_TEXTURE "Content/Textures/Effects/purpleportal_spritesheet_closing.png"
+
+#pragma endregion Contains all the texture locations
 
 #include <vector>
 
