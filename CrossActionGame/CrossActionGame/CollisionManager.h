@@ -4,6 +4,7 @@
 #include "Enemy.h"
 #include "Player.h"
 #include "Object.h"
+#include "Instance.h"
 
 /*
 	Could send Entitys Velocity with objects SetPickedUpFlag but that is irrelevant since
@@ -17,11 +18,17 @@ public:
 	~CollisionManager();
 
 	void Initialize();
-	void Update(Player *aPlayer, std::vector<Enemy*> someEnemies, std::vector<Object*> someObjects, Locale &aLocale);
+	void Update(Player *aPlayer, std::vector<Enemy*> someEnemies, std::vector<Object*> someObjects, Instance &anInstance, Locale &aLocale);
+	bool GetOpenPortalFlag();
+	bool GetNextLocaleFlag();
+	void SetOpenPortalFlag(bool aStatement);
+	void SetNextLocaleFlag(bool aStatement);
 	
 private:
 	int myXBarrelAmount;
-	bool myOpenPortalFlag;
+	bool
+		myOpenPortalFlag,
+		myNextLocaleFlag;
 };
 
 #endif

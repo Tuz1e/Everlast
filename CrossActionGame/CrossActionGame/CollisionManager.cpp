@@ -11,10 +11,9 @@ CollisionManager::~CollisionManager()
 
 void CollisionManager::Initialize()
 {
-	//myXBarrelAmount = 0;
 }
 
-void CollisionManager::Update(Player *aPlayer, std::vector<Enemy*> someEnemies, std::vector<Object*> someObjects, Locale &aLocale)
+void CollisionManager::Update(Player *aPlayer, std::vector<Enemy*> someEnemies, std::vector<Object*> someObjects, Instance &anInstance, Locale &aLocale)
 {
 	for (size_t i = 0; i < someEnemies.size(); i++)
 	{
@@ -48,6 +47,10 @@ void CollisionManager::Update(Player *aPlayer, std::vector<Enemy*> someEnemies, 
 				{
 					someObjects[i]->SetPickedUpFlag(true);
 				}
+				else 
+				{
+					someObjects[i]->SetPickedUpFlag(false);
+				}
 			}
 		}
 		else 
@@ -56,23 +59,57 @@ void CollisionManager::Update(Player *aPlayer, std::vector<Enemy*> someEnemies, 
 		}
 	}
 
-	//if (aLocale == Locale::PUZZLE_00) 
-	//{
-	//	for (size_t i = 0; i < someObjects.size(); i++)
-	//	{
-	//		for (size_t j = 0; j < someObjects.size(); j++)
-	//		{
-	//			if (someObjects[i]->GetType() == ObjectTypes::BARREL) 
-	//			{
-	//				if (someObjects[j]->GetType() == ObjectTypes::XMARK) 
-	//				{
-	//					if (someObjects[j]->GetHitbox().getGlobalBounds().intersects(someObjects[i]->GetHitbox().getGlobalBounds())) 
-	//					{
-	//						//myXBarrelAmount += 1;
-	//					}
-	//				}
-	//			}
-	//		}
-	//	}
-	//}
+	if (aLocale == Locale::PUZZLE_00) 
+	{
+		if (!myOpenPortalFlag) 
+		{
+			myXBarrelAmount = 0;
+			for (size_t i = 0; i < someObjects.size(); i++)
+			{
+				for (size_t j = 0; j < someObjects.size(); j++)
+				{
+					if (someObjects[i]->GetType() == ObjectTypes::BARREL && someObjects[j]->GetType() == ObjectTypes::XMARK)
+					{
+						if (someObjects[j]->GetHitbox().getGlobalBounds().intersects(someObjects[i]->GetHitbox().getGlobalBounds()))
+						{
+							myXBarrelAmount++;
+						}
+					}
+				}
+			}
+			if (myXBarrelAmount >= 3)
+			{
+				printf("Puzzle Solved!");
+				myOpenPortalFlag = true;
+			}
+		}
+	}
+
+	if (myOpenPortalFlag || aLocale == Locale::START)
+	{
+		if (aPlayer->GetHitbox().getGlobalBounds().intersects(anInstance.GetHitbox().getGlobalBounds()))
+		{
+			myNextLocaleFlag = true;
+		}
+	}
+}
+
+bool CollisionManager::GetOpenPortalFlag()
+{
+	return myOpenPortalFlag;
+}
+
+bool CollisionManager::GetNextLocaleFlag()
+{
+	return myNextLocaleFlag;
+}
+
+void CollisionManager::SetOpenPortalFlag(bool aStatement)
+{
+	myOpenPortalFlag = aStatement;
+}
+
+void CollisionManager::SetNextLocaleFlag(bool aStatement)
+{
+	myNextLocaleFlag = aStatement;
 }

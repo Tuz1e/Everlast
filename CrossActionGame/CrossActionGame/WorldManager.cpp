@@ -14,14 +14,17 @@ WorldManager::~WorldManager()
 void WorldManager::Initialize()
 {
 	myLocale = new Locale();
-	*myLocale = Locale::PUZZLE_00;
+	*myLocale = Locale::START;
 
 	myPlayer = new Player();
 	myPlayer->Initialize();
 	myPlayer->SetPosition(sf::Vector2f(175, 350));
 	myEM.Initialize();
 	myObjM.Initialize();
-	myCM->Initialize();
+	myCM.Initialize();
+
+	myPortal.Initialize();
+	myPortal.SetPosition(sf::Vector2f(1000, 350));
 
 	printf("\nInitialized WorldManager.");
 
@@ -32,23 +35,36 @@ void WorldManager::LoadContent(TextureContainer &aTxtrContainer, sf::RenderWindo
 	myPlayer->LoadContent(aTxtrContainer);
 	myEM.LoadContent(aTxtrContainer);
 	myObjM.LoadContent(aTxtrContainer);
+	myPortal.LoadContent(aTxtrContainer);
+
 	printf("\nLoaded WorldManager Content.");
 }
 
 void WorldManager::Update(float & aDeltaTime)
 {
+	if (myCM.GetNextLocaleFlag())
+	{
+		NextLocale();
+	}
+
+	if (myCM.GetOpenPortalFlag() || *myLocale == Locale::START)
+	{
+		printf("Locale: %i", myLocale);
+		myPortal.Update(aDeltaTime);
+	}
+
 	/*
 		The switch statement is for optimization
 		Makes sure you don't have to go 
 		through enemy updates or object updates
 		unless you actually have to.
 	*/
-	myCM->Update(myPlayer, myEM.GetEnemies(), myObjM.GetObjects(), *myLocale);
+	myCM.Update(myPlayer, myEM.GetEnemies(), myObjM.GetObjects(), myPortal, *myLocale);
 	myPlayer->Update(aDeltaTime);
+	
 
 	switch (*myLocale) 
 	{	
-		case Locale::START:
 		case Locale::PUZZLE_00:
 		case Locale::PUZZLE_01:
 			myObjM.Update(aDeltaTime, myPlayer->GetVelocity());
@@ -71,11 +87,9 @@ void WorldManager::Render(sf::RenderWindow & aWindow)
 		through enemy renders or object renders
 		unless you actually have to.
 	*/
-	myPlayer->Render(aWindow);
 
 	switch (*myLocale)
 	{
-		case Locale::START:
 		case Locale::PUZZLE_00:
 		case Locale::PUZZLE_01:
 			myObjM.Render(aWindow);
@@ -87,6 +101,13 @@ void WorldManager::Render(sf::RenderWindow & aWindow)
 			//TODO: Include Boss Render
 			break;
 	}
+
+	if (myCM.GetOpenPortalFlag() || *myLocale == Locale::START)
+	{
+		myPortal.Render(aWindow);
+	}
+
+	myPlayer->Render(aWindow);
 }
 
 void WorldManager::LateRender(sf::RenderWindow & aWindow)
@@ -110,5 +131,8 @@ Player * WorldManager::GetPlayer()
 
 void WorldManager::NextLocale()
 {
+	myCM.SetNextLocaleFlag(false);
+	myCM.SetOpenPortalFlag(false);
+	myPlayer->SetPosition(sf::Vector2f(175, 350));
 	myLocale++;
 }

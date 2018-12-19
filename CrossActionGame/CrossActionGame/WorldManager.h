@@ -5,6 +5,7 @@
 #include "EnemyManager.h"
 #include "CollisionManager.h"
 #include "ObjectManager.h"
+#include "Portal.h"
 
 class WorldManager
 {
@@ -26,8 +27,9 @@ private:
 	Locale *myLocale;
 	Player *myPlayer;
 	EnemyManager myEM;
-	CollisionManager *myCM;
+	CollisionManager myCM;
 	ObjectManager myObjM;
+	Portal myPortal;
 };
 
 #endif

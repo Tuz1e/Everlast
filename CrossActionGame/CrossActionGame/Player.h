@@ -10,10 +10,10 @@ public:
 	Player();
 	~Player();
 
-	void Initialize() override;
-	void LoadContent(TextureContainer &aTxtrContainer) override;
-	void Update(float &aDeltaTime) override;
-	void Render(sf::RenderWindow &aWindow) override;
+	void Initialize();
+	void LoadContent(TextureContainer &aTxtrContainer);
+	void Update(float &aDeltaTime);
+	void Render(sf::RenderWindow &aWindow);
 	void Attacking(float &aDeltaTime);
 	sf::Vector2f GetVelocity();
 	bool GetPickupFlag();

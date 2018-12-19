@@ -16,9 +16,6 @@
     <Filter Include="Source Files\Filters">
       <UniqueIdentifier>{9f145623-8e65-4ef1-8125-9d8721de7219}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Source Files\Filters\Object Definitions">
-      <UniqueIdentifier>{2852c72e-3cfb-4a68-8174-298123fd3761}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Source Files\Filters\Texture Managing">
       <UniqueIdentifier>{3a112f8a-8ea0-4181-948c-9ebb9fe485e0}</UniqueIdentifier>
     </Filter>
@@ -30,9 +27,6 @@
     </Filter>
     <Filter Include="Header Files\Filters\Managers">
       <UniqueIdentifier>{954145e4-7c39-44ea-8572-84eb103a639e}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Header Files\Filters\Object Definitions">
-      <UniqueIdentifier>{940df98d-c1bc-481c-9315-20a961d6a56e}</UniqueIdentifier>
     </Filter>
     <Filter Include="Header Files\Filters\Texture Managing">
       <UniqueIdentifier>{9dd86b6e-5dcb-4325-a1ae-ca3849698605}</UniqueIdentifier>
@@ -60,6 +54,18 @@
     </Filter>
     <Filter Include="Source Files\Filters\Entities\Objects">
       <UniqueIdentifier>{5354c16c-f4b0-4c15-b620-f10ccdebde10}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Filters\Entities\Instance">
+      <UniqueIdentifier>{2af9591b-caaa-4391-b466-ebdda9dacaa3}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Filters\Entities\Instance">
+      <UniqueIdentifier>{2993fcfd-5053-44f2-b140-67eabca20cba}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Filters\Entities\Parents">
+      <UniqueIdentifier>{940df98d-c1bc-481c-9315-20a961d6a56e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Filters\Entities\Parents">
+      <UniqueIdentifier>{2852c72e-3cfb-4a68-8174-298123fd3761}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -91,13 +97,13 @@
       <Filter>Header Files\Filters\Managers</Filter>
     </ClInclude>
     <ClInclude Include="Entity.h">
-      <Filter>Header Files\Filters\Object Definitions</Filter>
+      <Filter>Header Files\Filters\Entities\Parents</Filter>
     </ClInclude>
     <ClInclude Include="WorldManager.h">
       <Filter>Header Files\Filters\Managers</Filter>
     </ClInclude>
     <ClInclude Include="Enemy.h">
-      <Filter>Header Files\Filters\Object Definitions</Filter>
+      <Filter>Header Files\Filters\Entities\Parents</Filter>
     </ClInclude>
     <ClInclude Include="CollisionManager.h">
       <Filter>Header Files\Filters\Managers</Filter>
@@ -109,7 +115,7 @@
       <Filter>Header Files\Filters\Entities\Objects</Filter>
     </ClInclude>
     <ClInclude Include="Object.h">
-      <Filter>Header Files\Filters\Object Definitions</Filter>
+      <Filter>Header Files\Filters\Entities\Parents</Filter>
     </ClInclude>
     <ClInclude Include="ObjectManager.h">
       <Filter>Header Files\Filters\Managers</Filter>
@@ -119,6 +125,12 @@
     </ClInclude>
     <ClInclude Include="Player.h">
       <Filter>Header Files\Filters\Entities</Filter>
+    </ClInclude>
+    <ClInclude Include="Instance.h">
+      <Filter>Header Files\Filters\Entities\Parents</Filter>
+    </ClInclude>
+    <ClInclude Include="Portal.h">
+      <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -150,7 +162,7 @@
       <Filter>Source Files\Filters\Texture Managing</Filter>
     </ClCompile>
     <ClCompile Include="Entity.cpp">
-      <Filter>Source Files\Filters\Object Definitions</Filter>
+      <Filter>Source Files\Filters\Entities\Parents</Filter>
     </ClCompile>
     <ClCompile Include="EnemyManager.cpp">
       <Filter>Source Files\Filters\Managers</Filter>
@@ -159,7 +171,7 @@
       <Filter>Source Files\Filters\Managers</Filter>
     </ClCompile>
     <ClCompile Include="Enemy.cpp">
-      <Filter>Source Files\Filters\Object Definitions</Filter>
+      <Filter>Source Files\Filters\Entities\Parents</Filter>
     </ClCompile>
     <ClCompile Include="CollisionManager.cpp">
       <Filter>Source Files\Filters\Managers</Filter>
@@ -171,7 +183,7 @@
       <Filter>Source Files\Filters\Entities\Objects</Filter>
     </ClCompile>
     <ClCompile Include="Object.cpp">
-      <Filter>Source Files\Filters\Object Definitions</Filter>
+      <Filter>Source Files\Filters\Entities\Parents</Filter>
     </ClCompile>
     <ClCompile Include="ObjectManager.cpp">
       <Filter>Source Files\Filters\Managers</Filter>
@@ -181,6 +193,12 @@
     </ClCompile>
     <ClCompile Include="Player.cpp">
       <Filter>Source Files\Filters\Entities</Filter>
+    </ClCompile>
+    <ClCompile Include="Instance.cpp">
+      <Filter>Source Files\Filters\Entities\Parents</Filter>
+    </ClCompile>
+    <ClCompile Include="Portal.cpp">
+      <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

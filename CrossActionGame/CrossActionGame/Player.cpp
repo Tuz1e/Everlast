@@ -138,7 +138,7 @@ void Player::Update(float & aDeltaTime)
 		}
 		else 
 		{
-			myAttackAnimationLength -= 1 * aDeltaTime;
+			myAttackAnimationLength -= 1;
 		}
 		break;
 	}
@@ -171,7 +171,7 @@ void Player::Attacking(float &aDeltaTime)
 			SetActionState(6.5f);
 
 			//Literally no idea why adding 1.25f works, but it works, sooo... just gonna leave it there
-			myAttackAnimationLength = mySpriteSheets[ATTACK]->myColumns * 6.5f;
+			myAttackAnimationLength = mySpriteSheets[ATTACK]->myColumns * 6.5f * aDeltaTime * 1.25f;
 		}
 	}
 	else
