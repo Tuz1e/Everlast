@@ -19,6 +19,7 @@ void WorldManager::Initialize()
 	myPlayer = new Player();
 	myPlayer->Initialize();
 	myPlayer->SetPosition(sf::Vector2f(175, 350));
+	myUI.Initialize();
 	myEM.Initialize();
 	myObjM.Initialize();
 	myCM.Initialize();
@@ -49,7 +50,6 @@ void WorldManager::Update(float & aDeltaTime)
 
 	if (myCM.GetOpenPortalFlag() || *myLocale == Locale::START)
 	{
-		printf("Locale: %i", myLocale);
 		myPortal.Update(aDeltaTime);
 	}
 
@@ -66,7 +66,6 @@ void WorldManager::Update(float & aDeltaTime)
 	switch (*myLocale) 
 	{	
 		case Locale::PUZZLE_00:
-		case Locale::PUZZLE_01:
 			myObjM.Update(aDeltaTime, myPlayer->GetVelocity());
 			break;
 
@@ -76,6 +75,12 @@ void WorldManager::Update(float & aDeltaTime)
 		case Locale::BOSS:
 			//TODO: Include Boss Update
 			break;
+	}
+	myUI.Update(aDeltaTime, myPlayer);
+
+	if (myPlayer->GetHealth() <= 0) 
+	{
+		exit(0);
 	}
 }
 
@@ -91,7 +96,6 @@ void WorldManager::Render(sf::RenderWindow & aWindow)
 	switch (*myLocale)
 	{
 		case Locale::PUZZLE_00:
-		case Locale::PUZZLE_01:
 			myObjM.Render(aWindow);
 			break;
 		case Locale::ENEMY_FIGHT_SCENE:
@@ -106,12 +110,12 @@ void WorldManager::Render(sf::RenderWindow & aWindow)
 	{
 		myPortal.Render(aWindow);
 	}
-
 	myPlayer->Render(aWindow);
 }
 
 void WorldManager::LateRender(sf::RenderWindow & aWindow)
 {
+	myUI.LateRender(aWindow);
 }
 
 Locale * WorldManager::GetLocale()
@@ -134,5 +138,8 @@ void WorldManager::NextLocale()
 	myCM.SetNextLocaleFlag(false);
 	myCM.SetOpenPortalFlag(false);
 	myPlayer->SetPosition(sf::Vector2f(175, 350));
-	myLocale++;
+
+	std::cout << "\n\nPrevious Locale: " << *myLocale << std::endl;
+	*myLocale = static_cast<Locale>((*myLocale + 1) % Locale::LocaleAmount);
+	std::cout << "Current Locale: " << *myLocale << std::endl;
 }

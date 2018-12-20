@@ -6,6 +6,7 @@
 #include "CollisionManager.h"
 #include "ObjectManager.h"
 #include "Portal.h"
+#include "UIManager.h"
 
 class WorldManager
 {
@@ -30,6 +31,7 @@ private:
 	CollisionManager myCM;
 	ObjectManager myObjM;
 	Portal myPortal;
+	UIManager myUI;
 };
 
 #endif

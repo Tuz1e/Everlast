@@ -4,9 +4,11 @@
 
 #include "Enemy.h"
 #include "SkeletonWarrior.h"
+#include "MiniSkeletonWarrior.h"
 
 enum EnemyTypes 
 {
+	MiniSKW,
 	SKW,
 
 	SIZE

@@ -3,6 +3,8 @@
 
 #include "Entity.h"
 
+//TODO: Create more enemies
+
 //For enemy specific things
 class Enemy : public Entity
 {
@@ -20,7 +22,8 @@ protected:
 		*myExistingFlag = false;
 	sf::Vector2f myDirection;
 	float myRecogDistance; //Recognition Distance
-	int myHitDistance;
+	int myHitDistance,
+		myAnimateLength;
 	
 };
 

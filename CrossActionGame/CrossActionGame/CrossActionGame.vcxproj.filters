@@ -130,6 +130,12 @@
       <Filter>Header Files\Filters\Entities\Parents</Filter>
     </ClInclude>
     <ClInclude Include="Portal.h">
+      <Filter>Header Files\Filters\Entities\Instance</Filter>
+    </ClInclude>
+    <ClInclude Include="UIManager.h">
+      <Filter>Header Files\Filters\Managers</Filter>
+    </ClInclude>
+    <ClInclude Include="MiniSkeletonWarrior.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
@@ -198,6 +204,12 @@
       <Filter>Source Files\Filters\Entities\Parents</Filter>
     </ClCompile>
     <ClCompile Include="Portal.cpp">
+      <Filter>Source Files\Filters\Entities\Instance</Filter>
+    </ClCompile>
+    <ClCompile Include="UIManager.cpp">
+      <Filter>Source Files\Filters\Managers</Filter>
+    </ClCompile>
+    <ClCompile Include="MiniSkeletonWarrior.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>

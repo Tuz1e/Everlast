@@ -13,26 +13,25 @@ void CollisionManager::Initialize()
 {
 }
 
+//FIX: Enemy spasm like crazy when colliding with each other
+
 void CollisionManager::Update(Player *aPlayer, std::vector<Enemy*> someEnemies, std::vector<Object*> someObjects, Instance &anInstance, Locale &aLocale)
 {
 	for (size_t i = 0; i < someEnemies.size(); i++)
 	{
-		if (someEnemies[i]->GetExistingFlag())
+		if (aPlayer->GetAttackingFlag())
 		{
-			if (aPlayer->GetAttackingFlag())
+			if (aPlayer->GetWeaponBB().getGlobalBounds().intersects(someEnemies[i]->GetSprite().GetSprite().getGlobalBounds()))
 			{
-				if (aPlayer->GetWeaponBB().getGlobalBounds().intersects(someEnemies[i]->GetSprite().GetSprite().getGlobalBounds()))
-				{
-					someEnemies[i]->HealthModifier(aPlayer->GetDamage() * -1); //*-1 Makes the number negative, hence making the enemy take damage.
-				}
+				someEnemies[i]->HealthModifier(aPlayer->GetDamage() * -1); //*-1 Makes the number negative, hence making the enemy take damage.
 			}
+		}
 
-			if (someEnemies[i]->GetAttackingFlag())
+		if (someEnemies[i]->GetAttackingFlag())
+		{
+			if (someEnemies[i]->GetWeaponBB().getGlobalBounds().intersects(aPlayer->GetHitbox().getGlobalBounds()))
 			{
-				if (someEnemies[i]->GetWeaponBB().getGlobalBounds().intersects(aPlayer->GetHitbox().getGlobalBounds()))
-				{
-					aPlayer->HealthModifier(someEnemies[i]->GetDamage() * -1); //*-1 Makes the number negative, hence making the enemy take damage.
-				}
+				aPlayer->HealthModifier(someEnemies[i]->GetDamage() * -1); //*-1 Makes the number negative, hence making the enemy take damage.
 			}
 		}
 	}

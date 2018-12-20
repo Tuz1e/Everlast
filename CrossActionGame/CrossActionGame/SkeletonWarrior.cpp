@@ -14,7 +14,6 @@ void SkeletonWarrior::Initialize()
 {
 	myHealth = 75;
 	mySpeed = sf::Vector2f(2.0f, 2.0f);
-	myPosition = sf::Vector2f(800.0f, 550.0f);
 	myRecogDistance = 500.0f;
 	myHitDistance = 50.0f;
 	myActionState = ActionState::IDLE;
@@ -22,6 +21,7 @@ void SkeletonWarrior::Initialize()
 	myAttackingFlag = false;
 	myDamage = 2;
 	myWeaponRange = 80.0f;
+	myAliveFlag = false;
 }
 
 void SkeletonWarrior::LoadContent(TextureContainer & aTxtrContainer)
@@ -86,6 +86,7 @@ void SkeletonWarrior::Update(float & aDeltaTime, sf::Vector2f &aPosition)
 			myTargetAcquired = true;
 			myActionState = ActionState::WALK;
 			SetActionState(11.0f);
+			myAnimateLength = mySpriteSheets[myActionState]->myFrames * 5.5f * aDeltaTime * 1.25f;
 		}
 		break;
 	case WALK:
@@ -96,6 +97,8 @@ void SkeletonWarrior::Update(float & aDeltaTime, sf::Vector2f &aPosition)
 				myActionState = ActionState::ATTACK;
 				SetActionState(5.5f);
 				myAttackingFlag = true;
+				myAnimateLength = mySpriteSheets[myActionState]->myFrames * 5.5f * aDeltaTime * 1.25f;
+				
 			}
 			else
 			{
@@ -106,12 +109,15 @@ void SkeletonWarrior::Update(float & aDeltaTime, sf::Vector2f &aPosition)
 		}
 		break;
 	case ATTACK:
+		//FIX: SkeletonWarrior attack is buggy
 		myAttackingFlag = false;
-		if (tempHypo > myHitDistance) 
+		myAnimateLength -= 1 * aDeltaTime;
+		if (myAnimateLength <= 0 || tempHypo > myHitDistance)
 		{
 			myActionState = ActionState::WALK;
 			SetActionState(11.0f);
 			myAttackingFlag = false;
+			myAnimateLength = mySpriteSheets[myActionState]->myFrames * 5.5f * aDeltaTime * 1.25f;
 		}
 		break;
 	}

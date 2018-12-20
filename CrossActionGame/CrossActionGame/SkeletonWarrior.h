@@ -10,9 +10,9 @@ public:
 	~SkeletonWarrior();
 
 	void Initialize() override;
-	void LoadContent(TextureContainer &aTxtrContainer) override;
-	void Update(float &aDeltaTime, sf::Vector2f &aPosition) override;
-	void Render(sf::RenderWindow &aWindow) override;
+	void LoadContent(TextureContainer &aTxtrContainer);
+	void Update(float &aDeltaTime, sf::Vector2f &aPosition);
+	void Render(sf::RenderWindow &aWindow);
 
 };
 

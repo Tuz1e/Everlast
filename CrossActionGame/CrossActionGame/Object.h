@@ -10,7 +10,7 @@ enum ObjectTypes
 	XMARK,
 	PORTAL,
 
-	LENGTH
+	UIAmount
 };
 
 //For object specific things

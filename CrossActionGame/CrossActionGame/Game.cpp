@@ -69,5 +69,5 @@ void Game::Render(sf::RenderWindow &aWindow)
 
 void Game::LateRender(sf::RenderWindow & aWindow)
 {
-	//Render UI Elements
+	myWM.LateRender(aWindow);
 }
