@@ -19,6 +19,3 @@ git clone https://github.com/TxJson/Everlast [Location]
 
 ## Dependencies:
 - SFML (Version 1.5.2)[Graphics Library and Game Logic](https://www.sfml-dev.org/, https://github.com/SFML/SFML)
-
-## Licensing
-[Apache License 2.0](https://github.com/TxJson/Everlast/blob/master/LICENSE)
