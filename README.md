@@ -1,6 +1,6 @@
 # Everlast
 
-First C++ project using graphics library, which in this case, is SFML.
+First C++ project using a graphics library, which in this case, is SFML.
 
 ## Information to run project
 ###### OS Support
